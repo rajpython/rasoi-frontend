@@ -1,38 +1,325 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* 1) Base reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #EDECEE; /* Light background */
+    color: #333;
   }
-  to {
-    transform: rotate(360deg);
+  
+  /* 2) Header (Grid) */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto; /* left takes available space, right auto-sized */
+    align-items: center;
+    background-color: #495E57; /* Dark green */
+    color: #FBDABB;           /* Light text color */
+    padding: 1rem 2rem;
   }
-}
+  
+  .header-left {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .logo {
+    height: 50px;
+  }
+  
+  .site-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    font-style: italic; /* Makes the text italic */
+    letter-spacing: 6px; /* Adds space between letters */
+  }
+
+  .header-right .reserve-button {
+    background-color: #F4CE14; /* Yellow accent */
+    color: #333;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 0.25rem;
+  }
+  
+  /* 3) Navigation (Grid) */
+  .nav {
+    width: 60%;
+    margin: 0 auto;
+    background-color: #495E57;
+    padding: 1rem 2rem;
+  }
+  
+  .nav-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 equally spaced columns */
+    gap: 0.8rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-items: center;
+    align-items: center;
+  }
+  
+  .nav-list a {
+    color: #FBDABB; /* Light peach text color */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  .nav-list a:hover {
+    text-decoration: underline;
+  }
+  
+  /* 4) Main Content Area */
+  .main-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+
+
+/* Hero Section - Reduced Height & Balanced Layout */
+.hero {
+    display: grid;
+    grid-template-columns: 35% 65%; /* Adjusted for better text/image ratio */
+    gap: 1rem;
+    background-color: #F4CE14; /* Yellow background */
+    padding: 1rem 2rem; /* Reduced padding */
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    align-items: center;
+    overflow: hidden; /* Ensure no overflow */
+  }
+  
+  /* Reduce the size of text inside hero */
+  .hero-text {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+  
+  .hero-text h1 {
+    font-size: 1.8rem; /* Reduced from 2.5rem */
+    margin-bottom: 0.3rem;
+  }
+  
+  .hero-text h2 {
+    font-size: 1.2rem; /* Reduced from 1.75rem */
+    margin-bottom: 0.3rem;
+  }
+  
+  .hero-text p {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  /* Reduce button size */
+  .hero-text button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.25rem;
+  }
+  
+  /* Ensure the image is properly contained within a smaller space */
+  .hero-image {
+    width: 100%;
+    height: auto;
+    max-height: 300px; /* Set a max height to keep it proportional */
+    object-fit: cover; /* Ensures no distortion */
+    border-radius: 0.5rem;
+  }
+  
+
+
+
+
+
+  /* Order Online Button Container (can be placed between sections) */
+  .order-online-container {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .order-online {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: orange;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.25rem;
+  }
+  
+  /* 6) Specials Section (CSS Grid) */
+  .specials {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .specials-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .special-item {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .special-item img {
+    max-width: 100%;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* 7) CustomersSay Section (Grid-based) */
+  .customers-say {
+    background-color: #fff;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .customers-say h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* 8) Ames Section (Grid-based) */
+  .ames {
+    background-color: #e0f7fa; /* Light blue background, change hex as needed */
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .ames h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* 9) Footer (Grid) */
+  .footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: #495E57;
+    color: #FBDABB;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 1rem;
+    list-style: none;
+    margin-top: 0.5rem;
+    justify-items: center;
+  }
+  
+  .footer-links a {
+    color: #FBDABB;
+    text-decoration: none;
+  }
+  
+  /* 10) Responsive Breakpoints */
+  @media (max-width: 768px) {
+    /* Header: Stack items */
+    .header {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    
+
+    /* Hero: Stack columns vertically, remove forced width */
+    .hero {
+      grid-template-columns: 1fr;
+      text-align: center;
+      /* Let the hero expand with content */
+    }
+  
+    .hero-image {
+      height: auto;
+      margin-top: 1rem; /* Some spacing under text if needed */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .nav {
+      width: 80%; /* Make nav full width */
+      padding: 1rem; 
+    }
+  
+    .nav-list {
+      grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+      gap: 1rem; /* Adjust spacing between items */
+      text-align: center;
+    }
+  }
+
+  /* Booking page and form */
+
+  /* Booking Form Styling */
+.booking-page {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .booking-form {
+    display: grid;
+    max-width: 300px;
+    margin: 0 auto;
+    gap: 15px;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .booking-form label {
+    font-weight: bold;
+  }
+  
+  .booking-form input,
+  .booking-form select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .booking-form button {
+    background-color: #495E57;
+    color: #fff;
+    padding: 0.7rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  
+  .booking-form button:hover {
+    background-color: #F4CE14;
+    color: #333;
+  }
+  
