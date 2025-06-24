@@ -7,6 +7,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import ConfirmModal from "../components/ConfirmModal";
 import UpdateBookingForm from "../components/UpdateBookingForm";
 import { fetchAPI } from "../api/bookingApi";
+import BASE_URL from "../apiConfig";
 
 function ManageReservationPage() {
   const { ref } = useParams();
@@ -18,7 +19,7 @@ function ManageReservationPage() {
   const [showModal, setShowModal] = useState(false);
   const [confirmationMessage, setConfirmationMessage] = useState("");
 
-  const API_BASE = "http://127.0.0.1:9100/restaurante/booking";
+  const API_BASE = `${BASE_URL}/restaurante/booking`;
 
   useEffect(() => {
     fetch(`${API_BASE}/manage/${ref}/`)
