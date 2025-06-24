@@ -1,0 +1,209 @@
+/* ===================== HEADER ===================== */
+.header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    background-color: #495E57; /* Dark green */
+    color: #FBDABB;           /* Light text color */
+    /* padding: 1rem 2rem; */
+    /* padding: 0 0; */
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.33s cubic-bezier(.7,.01,.22,1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  
+  /* Shrunk header state */
+  .header-shrunk {
+    height: 30px;
+    padding: 0.15rem 0.7rem;
+  }
+  
+  /* Header left: logo & title */
+  .header-left {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  /* Logo size and shrink effect */
+  .logo {
+    height: 40px;
+    transition: height 0.33s cubic-bezier(.7,.01,.22,1);
+  }
+  .header-shrunk .logo {
+    height: 20px;
+  }
+
+  /* Site title */
+  .site-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: 6px;
+    transition: font-size 0.33s cubic-bezier(.7,.01,.22,1);
+  }
+  .header-shrunk .site-title {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+  
+  /* Header right: reserve button */
+  .header-right .reserve-button {
+    background-color: #F4CE14; /* Yellow accent */
+    color: #333;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    transition: padding 0.33s, font-size 0.33s;
+  }
+  .header-shrunk .header-right .reserve-button {
+    padding: 0.18rem 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  /* ======================= NAV ====================== */
+  .nav {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #495E57;
+    /* padding: 0.5rem 1rem; */
+    overflow-x: hidden;
+    transition: all 0.33s cubic-bezier(.7,.01,.22,1);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.03);
+  }
+  .nav-shrunk {
+    top: 25px;
+    padding: 0.12rem 0.7rem;
+  }
+  
+  /* Nav list layout */
+  .nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  /* Nav links */
+  .nav-list a {
+    color: #FBDABB;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: font-size 0.33s;
+  }
+  .nav-list a:hover {
+    text-decoration: underline;
+  }
+  .nav-shrunk .nav-list a {
+    font-size: 0.75rem;
+  }
+  
+  /* Cart and conditional items */
+  .nav-list li {
+    margin: 0.5rem 0.75rem;
+    transition: margin 0.33s;
+  }
+  .nav-shrunk .nav-list li {
+    margin: 0.22rem 0.42rem;
+  }
+  
+  /* Welcome message and logout styling */
+  .nav-user {
+    color: #FBDABB;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-logout {
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+    color: #FBDABB;
+    transition: color 0.2s;
+  }
+  .nav-logout:hover {
+    color: white;
+  }
+  
+  /* ============== Responsive ============== */
+  @media (max-width: 900px) {
+    .header,
+    .nav {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+    .site-title {
+      font-size: 1.5rem;
+    }
+    .header-shrunk .site-title {
+      font-size: 0.9rem;
+    }
+    .header {
+      height: 60px;
+    }
+    .header-shrunk {
+      height: 34px;
+    }
+    .nav {
+      top: 60px;
+    }
+    .nav-shrunk {
+      top: 34px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .header, .nav {
+      padding-left: 0.2rem;
+      padding-right: 0.2rem;
+    }
+    .site-title {
+      font-size: 1rem;
+      letter-spacing: 2px;
+    }
+    .header-shrunk .site-title {
+      font-size: 0.65rem;
+    }
+    .logo {
+      height: 30px;
+    }
+    .header-shrunk .logo {
+      height: 16px;
+    }
+    .header {
+      height: 38px;
+    }
+    .header-shrunk {
+      height: 22px;
+    }
+    .nav {
+      top: 38px;
+    }
+    .nav-shrunk {
+      top: 22px;
+    }
+  }
+  

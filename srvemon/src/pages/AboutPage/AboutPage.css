@@ -1,0 +1,197 @@
+/* style.css */
+
+.about-container {
+  background: linear-gradient(135deg, #fff9c4 0%, #f8bbd0 50%, #ff8a80 100%);
+  min-height: 0;                  /* Remove minimum height */
+  width: 100vw;
+  margin: 0;
+  padding-top: 0;                 /* Remove gap at the top */
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.about-content {
+  width: 100vw;
+  background: rgba(255, 255, 255, 0.90);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 48px 6vw 36px 6vw;
+  border: none;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+  /* --- SPLIT SECTION FOR POSTER + WRITEUP --- */
+.split-section {
+    display: flex;
+    gap: 32px;
+    margin: 32px 0;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .split-left {
+    flex: 1 1 0;
+    min-width: 260px;
+  }
+  .split-right {
+    flex: 1 1 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: 240px;
+  }
+
+  .poster-image {
+    width: 100%;
+    max-width: 544px;    /* Increased width */
+    max-height: auto;   /* 25% less than 340px (or set to 75% of original) */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    margin: 0;
+    height: auto;        /* Keep aspect ratio */
+    object-fit: cover;   /* Add this if you want cropping for fixed area */
+  }
+  
+  /* --- END SPLIT SECTION --- */
+  
+  .title {
+    font-size: 2.5rem;
+    color: #e91e63;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 0 #fff9c4, 2px 2px 4px #f06292;
+  }
+  
+  .subtitle {
+    font-size: 1.35rem;
+    color: #fbc02d;
+    text-align: center;
+    margin-bottom: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  .inspiration {
+    background: #f8bbd0;
+    padding: 10px 8px;
+    border: 1.5px solid #e91e63;
+    border-radius: 12px;
+    margin-bottom: 22px;
+    font-size: 1.08rem;
+    font-weight: 500;
+    text-align: center;
+  }
+  
+  h3 {
+    color: #ff5722;
+    margin-bottom: 18px;
+    margin-top: 22px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+  
+  p, li {
+    color: #444;
+    line-height: 1.62;
+    font-size: 1.06rem;
+    margin-bottom: 18px;
+  }
+  
+  ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+    padding-left: 5px;
+  }
+  
+  .filmy-heading {
+    margin-top: 28px;
+    margin-bottom: 20px;
+  }
+  
+
+  .mantra {
+   padding-bottom: 30px;
+    margin-bottom: 30px;
+  }
+  
+
+  .filmy-list li {
+    list-style-type: '🎬 ';
+    margin-left: 0;
+    margin-bottom: 25px;
+  }
+  
+  blockquote {
+    border-left: 6px solid #fbc02d;
+    padding-left: 15px;
+    padding-top: 25px;
+    padding-bottom: 20px;
+    color: #e91e63;
+    background: #fffde7;
+    font-style: italic;
+    font-size: 1.12rem;
+    margin: 26px 0 20px 0;
+    border-radius: 6px;
+  }
+  
+  blockquote span {
+    display: block;
+    color: #757575;
+    margin-top: 16px;
+    font-style: normal;
+    font-size: 1rem;
+  }
+  
+  .center-text {
+    text-align: center;
+    font-size: 1.08rem;
+    margin-bottom: 22px;
+  }
+  
+  .cta {
+    text-align: center;
+    background: #fff59d;
+    border: 1.5px solid #fbc02d;
+    border-radius: 42px;
+    padding: 14px 22px 8px 22px;
+    font-weight: bold;
+    color: #d32f2f;
+    box-shadow: 0 1px 8px rgba(251, 192, 45, 0.12);
+    font-size: 1.13rem;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+  }
+  
+  .no-dacoits {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #616161;
+    margin-top: 15px;
+  }
+  
+  @media (max-width: 600px) {
+    .about-container {
+      padding-top: 0px;
+    }
+
+    .about-content {
+      padding: 14px 2vw 10px 2vw;
+    }
+    .title { font-size: 2rem; }
+    .subtitle { font-size: 1.05rem; }
+    h3 { font-size: 1.08rem; }
+    blockquote { font-size: 1rem; }
+  }
+  

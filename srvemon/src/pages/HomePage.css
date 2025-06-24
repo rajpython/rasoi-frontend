@@ -1,0 +1,8 @@
+.homepage-bg {
+    background-color: #495E57; /* Dark green */
+    color: #FBDABB;           /* Light text color */
+    min-height: 100vh;        /* Ensure covers full viewport */
+    width: 100%;
+    /* Optionally add padding etc. */
+  }
+  

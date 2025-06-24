@@ -1,0 +1,111 @@
+.menu-container {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    margin-top: 0px;
+  }
+  
+  .scroll-note {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+    user-select: none;
+  }
+  
+  .menu-category-section {
+    margin-bottom: 3rem;
+  }
+  
+  .menu-category-title {
+    font-size: 1.8rem;
+    color: #222;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.25rem;
+  }
+  
+  /* Grid layout per category */
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 0;
+  }
+  
+  /* First row margin for top categories only */
+  .menu-grid > .menu-card:nth-child(-n + 4) {
+    margin-top: 15px;
+  }
+  
+  .menu-card {
+    display: flex;
+    flex-direction: column;
+    height: 360px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    padding: 1rem;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .menu-card {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  
+  .menu-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+    transform: scale(1.03);
+    z-index: 10; /* ensures it stays above others */
+  }
+  
+
+
+  .menu-card-image {
+    flex: 0 0 calc(2 / 3 * 360px);
+    width: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .menu-card-content {
+    flex: 1 1 calc(1 / 3 * 360px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .menu-card-content h4,
+  .menu-card-content p {
+    margin: 0.1rem 0;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+  }
+  
+  .menu-card-content p strong {
+    font-size: 1.1rem;
+    color: #111;
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .menu-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .menu-grid > .menu-card:nth-child(-n + 2) {
+      margin-top: 15px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .menu-grid {
+      grid-template-columns: 1fr;
+    }
+    .menu-grid > .menu-card:nth-child(1) {
+      margin-top: 15px;
+    }
+  }
+  

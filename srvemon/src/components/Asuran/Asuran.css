@@ -1,0 +1,62 @@
+.asuran {
+    width: 100vw;
+    max-width: 100%;
+    margin: 0;                     /* No margin outside */
+    padding: 48px 8vw 44px 8vw;    /* Generous vertical & horizontal padding */
+    background: linear-gradient(90deg, #fffde7 70%, #f8bbd0 100%);
+    text-align: center;            /* Center all text! */
+    box-sizing: border-box;
+    display: block;                /* Not flex */
+  }
+  
+  .asuran h2 {
+    font-size: 2rem;
+    color: #e91e63;
+    margin: 0 0 1.2rem 0;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-family: inherit;
+    text-align: center;
+  }
+  
+  .asuran p {
+    font-size: 1.16rem;
+    color: #444;
+    text-align: center;
+    margin: 0 0 1.1rem 0;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  
+  .asuran p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .asuran h3 {
+    font-size: 1.3rem;
+    color: #e91e63;
+    text-align: center;
+    margin: 1.2rem 0 0 0;
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 0.5px;
+  }
+  
+  @media (max-width: 900px) {
+    .asuran {
+      padding: 26px 3vw 22px 3vw;
+    }
+    .asuran h2 { font-size: 1.15rem; }
+    .asuran h3 { font-size: 1.08rem; }
+    .asuran p { font-size: 0.98rem; }
+  }
+  
+  @media (max-width: 600px) {
+    .asuran {
+      padding: 14px 1vw 12px 1vw;
+    }
+    .asuran h2 { font-size: 1.05rem; }
+    .asuran h3 { font-size: 0.95rem; }
+    .asuran p { font-size: 0.9rem; }
+  }
+  

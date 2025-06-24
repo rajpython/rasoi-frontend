@@ -1,0 +1,170 @@
+.order-page {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    text-align: center;
+    margin-top: 90px; /* Start below nav/header */
+    min-height: 100vh;
+  }
+  
+  .order-page h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .scroll-note {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+    user-select: none;
+  }
+  
+  /* Category section styling */
+  .menu-category-section {
+    margin-bottom: 3rem; /* space between categories */
+  }
+  
+  .menu-category-title {
+    font-size: 1.8rem;
+    color: #222;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.25rem;
+    text-align: left;
+  }
+  
+  /* Grid layout similar to menu page */
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  
+  /* First row offset to clear fixed header */
+  .menu-grid > .menu-card:nth-child(-n + 4) {
+    margin-top: 15px;
+  }
+  
+  /* Individual menu card */
+  .menu-card {
+    display: flex;
+    flex-direction: column;
+    height: 360px; /* fixed height */
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    padding: 1rem;
+    text-align: center;
+    justify-content: space-between; /* space between content and controls */
+    overflow: hidden;
+  }
+
+  .menu-card {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  
+  .menu-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+    transform: scale(1.03);
+    z-index: 10; /* ensures it stays above others */
+  }
+  
+  
+  /* Image takes 2/3 card height */
+  .menu-card-image {
+    height: calc(2 / 3 * 360px); /* 240px */
+    width: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Title and description */
+  .menu-card h3,
+  .menu-card h4,
+  .menu-card p {
+    margin: 0.2rem 0;
+    overflow-wrap: break-word;
+    color: #444;
+  }
+  
+  /* Price styling */
+  .menu-card p strong {
+    font-size: 1.1rem;
+    color: #111;
+  }
+
+
+  /* Controls container below description */
+  .menu-card label {
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    color: #222;
+    cursor: pointer;
+  }
+  
+  .menu-card input[type="number"] {
+    width: 60px;
+    padding: 0.25rem 0.5rem;
+    margin-left: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+  
+  .menu-card input[type="number"]:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  /* Add to cart button styling */
+  .menu-card button {
+    margin-top: 0.75rem;
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .menu-card button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive grid adjustments */
+  @media (max-width: 1024px) {
+    .menu-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .menu-grid > .menu-card:nth-child(-n + 2) {
+      margin-top: 15px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .menu-grid {
+      grid-template-columns: 1fr;
+    }
+    .menu-grid > .menu-card:nth-child(1) {
+      margin-top: 15px;
+    }
+  
+    .menu-card input[type="number"] {
+      width: 50px;
+    }
+  
+    .menu-card button {
+      width: 100%;
+    }
+  }
+  

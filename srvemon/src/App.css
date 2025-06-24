@@ -7,225 +7,119 @@
   
   body {
     font-family: Arial, sans-serif;
-    background-color: #EDECEE; /* Light background */
-    color: #333;
+    background-color: #EDECEE; 
+    color: #333; 
+   
   }
   
-  /* 2) Header (Grid) */
-  .header {
-    display: grid;
-    grid-template-columns: 1fr auto; /* left takes available space, right auto-sized */
-    align-items: center;
-    background-color: #495E57; /* Dark green */
-    color: #FBDABB;           /* Light text color */
-    padding: 1rem 2rem;
-  }
   
-  .header-left {
-    display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .logo {
-    height: 50px;
-  }
-  
-  .site-title {
-    font-size: 2.2rem;
-    font-weight: bold;
-    font-style: italic; /* Makes the text italic */
-    letter-spacing: 6px; /* Adds space between letters */
-  }
-
-  .header-right .reserve-button {
-    background-color: #F4CE14; /* Yellow accent */
-    color: #333;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    font-weight: 600;
-    border-radius: 0.25rem;
-  }
-  
-  /* 3) Navigation (Grid) */
-  .nav {
-    width: 60%;
-    margin: 0 auto;
-    background-color: #495E57;
-    padding: 1rem 2rem;
-  }
-  
-  .nav-list {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 6 equally spaced columns */
-    gap: 0.8rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    justify-items: center;
-    align-items: center;
-  }
-  
-  .nav-list a {
-    color: #FBDABB; /* Light peach text color */
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-  }
-  
-  .nav-list a:hover {
-    text-decoration: underline;
-  }
   
   /* 4) Main Content Area */
   .main-content {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 2rem;
+    display:grid;
+    max-width: auto;
+    margin-top: 0px;
+    padding-top: 0;
   }
   
+  /* .main-content {
+    margin-top: 150px;
+  }
+   */
 
-
-/* Hero Section - Reduced Height & Balanced Layout */
-.hero {
-    display: grid;
-    grid-template-columns: 35% 65%; /* Adjusted for better text/image ratio */
-    gap: 1rem;
-    background-color: #F4CE14; /* Yellow background */
-    padding: 1rem 2rem; /* Reduced padding */
-    border-radius: 8px;
-    margin-bottom: 1rem;
+  /* .specials-container.single-feature {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    overflow: hidden; /* Ensure no overflow */
-  }
-  
-  /* Reduce the size of text inside hero */
-  .hero-text {
-    font-size: 1rem;
-    line-height: 1.2;
-  }
-  
-  .hero-text h1 {
-    font-size: 1.8rem; /* Reduced from 2.5rem */
-    margin-bottom: 0.3rem;
-  }
-  
-  .hero-text h2 {
-    font-size: 1.2rem; /* Reduced from 1.75rem */
-    margin-bottom: 0.3rem;
-  }
-  
-  .hero-text p {
-    font-size: 0.9rem;
-    margin-bottom: 0.3rem;
-  }
-  
-  /* Reduce button size */
-  .hero-text button {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
-    background-color: #333;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 0.25rem;
-  }
-  
-  /* Ensure the image is properly contained within a smaller space */
-  .hero-image {
-    width: 100%;
-    height: auto;
-    max-height: 300px; /* Set a max height to keep it proportional */
-    object-fit: cover; /* Ensures no distortion */
-    border-radius: 0.5rem;
-  }
-  
-
-
-
-
-
-  /* Order Online Button Container (can be placed between sections) */
-  .order-online-container {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .order-online {
-    font-size: 1rem;
-    padding: 0.75rem 1.5rem;
-    background-color: orange;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 0.25rem;
-  }
-  
-  /* 6) Specials Section (CSS Grid) */
-  .specials {
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  
-  .specials-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
     margin-top: 1rem;
+    padding: 1rem;
+    animation: fade 1s ease-in-out;
   }
   
   .special-item {
+    max-width: 400px;
+    width: 100%;
     background-color: #fff;
     border-radius: 0.5rem;
     padding: 1rem;
-    text-align: left;
+    text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.5s ease-in-out;
   }
   
   .special-item img {
-    max-width: 100%;
+    width: 100%;
     border-radius: 0.5rem;
     margin-bottom: 0.5rem;
   }
+   */
+  @keyframes fade {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+  }
+  
+
+
+
   
   /* 7) CustomersSay Section (Grid-based) */
-  .customers-say {
+  /* .customers-say {
     background-color: #fff;
     padding: 2rem;
     text-align: center;
     margin-bottom: 2rem;
   }
+
+  .specials-container.single-feature {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 1rem;
+  animation: fade 1s ease-in-out;
+}
+
+.special-item {
+  max-width: 400px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.5s ease-in-out;
+}
+
+.special-item img {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+@keyframes fade {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+
   
   .customers-say h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
   }
-  
-  /* 8) Ames Section (Grid-based) */
-  .ames {
-    background-color: #e0f7fa; /* Light blue background, change hex as needed */
-    padding: 2rem;
-    text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .ames h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
+   */
   /* 9) Footer (Grid) */
-  .footer {
+  /* .footer {
     display: grid;
     grid-template-columns: 1fr;
     background-color: #495E57;
-    color: #FBDABB;
+    color: #FBDABB; 
     text-align: center;
     padding: 1rem;
   }
+
+  .footer p {
+  color: #FBDABB;
+}
   
   .footer-links {
     display: grid;
@@ -239,52 +133,54 @@
   .footer-links a {
     color: #FBDABB;
     text-decoration: none;
-  }
+  } */
   
   /* 10) Responsive Breakpoints */
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) { */
     /* Header: Stack items */
-    .header {
+    /* .header {
       grid-template-columns: 1fr;
       text-align: center;
     }
-    
+     */
 
     /* Hero: Stack columns vertically, remove forced width */
-    .hero {
+    /* .hero {
       grid-template-columns: 1fr;
       text-align: center;
-      /* Let the hero expand with content */
-    }
+     
+    } */
   
-    .hero-image {
+    /* .hero-image {
       height: auto;
-      margin-top: 1rem; /* Some spacing under text if needed */
+      margin-top: 1rem;
     }
-  }
-  
+  } */
+/*   
   @media (max-width: 768px) {
     .nav {
-      width: 80%; /* Make nav full width */
+      width: 80%; 
       padding: 1rem; 
-    }
+    } */
   
-    .nav-list {
-      grid-template-columns: repeat(2, 1fr); /* 2 items per row */
-      gap: 1rem; /* Adjust spacing between items */
+    /* .nav-list {
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 1rem; 
       text-align: center;
     }
-  }
+  } */
 
   /* Booking page and form */
 
   /* Booking Form Styling */
-.booking-page {
+/* .booking-page {
+    margin-top: 120;
     text-align: center;
     padding: 2rem;
   }
   
   .booking-form {
+    margin-top: 120;
     display: grid;
     max-width: 300px;
     margin: 0 auto;
@@ -306,7 +202,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-  
+
   .booking-form button {
     background-color: #495E57;
     color: #fff;
@@ -316,10 +212,42 @@
     cursor: pointer;
     border-radius: 5px;
     transition: background 0.3s;
-  }
+  } 
   
   .booking-form button:hover {
     background-color: #F4CE14;
     color: #333;
   }
+    */
+
+
   
+/* for cart page */
+/* 
+.cart-page {
+  padding: 2rem;
+  text-align: center;
+}
+
+
+.cart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.cart-item {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.cart-summary {
+  grid-column: 1 / -1;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f1f1f1;
+  border-radius: 0.5rem;
+} */

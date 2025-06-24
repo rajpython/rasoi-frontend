@@ -1,0 +1,22 @@
+/* BookingPage.css */
+
+/* Overall container */
+.booking-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 1rem 2rem; /* space for fixed header/nav */
+    background-color: #f4f4f4;
+    min-height: calc(100vh - 140px);
+    box-sizing: border-box;
+  }
+  
+  /* Prompt above the form */
+  .booking-page p {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #333;
+  }
+  
