@@ -216,12 +216,12 @@
   
   @media (max-width: 600px) {
     .review-carousel-container-wide {
-      height: 235px !important;
+      height: 250px !important;
     }
   
     .review-slide-wide {
-      height: 235px !important;
-      min-height: 235px !important;
+      height: 250px !important;
+      min-height: 250px !important;
       padding: 0 4vw;
     }
   
