@@ -66,7 +66,8 @@
   @media (max-width: 600px) {
     .carousel-fullscreen-container {
       height: 28vh !important; /* Instead of 22vh */
-      margin-top: 4vh;         /* Push it down slightly */
+      /* margin-top: 4vh;  */
+      margin-top: 60px;         /* Push it down slightly */
     }
   
     .carousel-fullscreen-title {
