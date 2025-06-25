@@ -165,7 +165,7 @@ function CustomerReviews() {
           //   transition: isTransitioning ? "transform 1.5s ease-in-out" : "none",
           // }}
           style={{
-            transform: `translateY(-${index * 220}px)`,  // 150px = new slide height
+            transform: `translateY(-${index * 230}px)`,  // 150px = new slide height
             transition: isTransitioning ? "transform 1.5s ease-in-out" : "none",
           }}
           
