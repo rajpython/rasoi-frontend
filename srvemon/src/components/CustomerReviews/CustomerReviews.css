@@ -216,28 +216,29 @@
   
   @media (max-width: 600px) {
     .review-carousel-container-wide {
-      height: 160px;  /* from 260px — reduced to fit smaller screens */
+      height: 220px !important;
     }
   
     .review-slide-wide {
-      height: 150px;   /* from 230px — matches better with container */
-      min-height: 150px;
+      height: 220px !important;
+      min-height: 220px !important;
+      padding: 0 4vw;
     }
   
     .review-feedback-wide {
-      font-size: 1rem;
-      padding: 0 5vw;
-      line-height: 1.4;
+      font-size: 0.95rem;
+      padding: 0 4vw;
+      line-height: 1.5;
     }
   
     .review-meta-wide {
       font-size: 0.85rem;
-      gap: 8px;
+      gap: 10px;
       flex-wrap: wrap;
     }
   
     .review-rating {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
   
     .review-date {
