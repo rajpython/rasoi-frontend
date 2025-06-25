@@ -160,10 +160,15 @@ function CustomerReviews() {
           className="review-carousel-slider-wide"
           ref={sliderRef}
           onTransitionEnd={handleTransitionEnd}
+          // style={{
+          //   transform: `translateY(-${index *50/reviews.length}%)`,
+          //   transition: isTransitioning ? "transform 1.5s ease-in-out" : "none",
+          // }}
           style={{
-            transform: `translateY(-${index *50/reviews.length}%)`,
+            transform: `translateY(-${index * 150}px)`,  // 150px = new slide height
             transition: isTransitioning ? "transform 1.5s ease-in-out" : "none",
           }}
+          
         >
           {slides.map((r, i) => (
             <div className="review-slide-wide" key={`${r.id || r.user || 'review'}-${i}`}>

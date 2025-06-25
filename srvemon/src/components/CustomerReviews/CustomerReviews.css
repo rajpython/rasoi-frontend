@@ -214,3 +214,34 @@
     }
   }
   
+  @media (max-width: 600px) {
+    .review-carousel-container-wide {
+      height: 160px;  /* from 260px — reduced to fit smaller screens */
+    }
+  
+    .review-slide-wide {
+      height: 150px;   /* from 230px — matches better with container */
+      min-height: 150px;
+    }
+  
+    .review-feedback-wide {
+      font-size: 1rem;
+      padding: 0 5vw;
+      line-height: 1.4;
+    }
+  
+    .review-meta-wide {
+      font-size: 0.85rem;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+  
+    .review-rating {
+      font-size: 0.95rem;
+    }
+  
+    .review-date {
+      font-size: 0.8rem;
+    }
+  }
+  
