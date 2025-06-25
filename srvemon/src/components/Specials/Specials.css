@@ -203,3 +203,63 @@
     .special-text { padding: 0.3rem 0.5rem; font-size: 0.87rem; }
   }
   
+
+  @media (max-width: 600px) {
+    .specials-row {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .specials-header {
+      width: 100%;
+      max-width: 100%;
+      padding: 0.8rem 0.3rem;
+      text-align: center;
+    }
+  
+    .specials-header h2 {
+      font-size: 1.1rem;
+      margin: 0.2rem 0;
+    }
+  
+    .carousel-container {
+      width: 100%;
+    }
+  
+    .carousel-slide {
+      flex-direction: column;
+      height: 180px; /* reduced from 350px */
+    }
+  
+    .special-image {
+      width: 100vw;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+  
+    .special-text {
+      width: 100%;
+      padding: 0.5rem 0.7rem;
+      font-size: 0.87rem;
+      text-align: left;
+      border-radius: 0 0 0.5rem 0.5rem;
+    }
+  
+    .special-text h3 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+  
+    .special-text p {
+      font-size: 0.85rem;
+      margin: 0.1rem 0;
+    }
+  
+    .pause-indicator {
+      bottom: 6px;
+      right: 8px;
+      font-size: 0.7rem;
+    }
+  }
+  
