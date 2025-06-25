@@ -246,4 +246,23 @@
     }
   }
   
+  @media (max-width: 600px) {
+    .header-left {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+    }
+  
+    .site-title {
+      text-align: center;
+      white-space: normal;
+      line-height: 1.1;
+      word-break: break-word;
+      display: inline-block;
+      justify-self: center;
+      max-width: 90vw;
+    }
+  }
   
