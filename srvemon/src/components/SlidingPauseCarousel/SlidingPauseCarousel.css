@@ -63,3 +63,19 @@
     .carousel-fullscreen-container { height: 22vh; }
   }
   
+  @media (max-width: 600px) {
+    .carousel-fullscreen-container {
+      height: 28vh !important; /* Instead of 22vh */
+      margin-top: 4vh;         /* Push it down slightly */
+    }
+  
+    .carousel-fullscreen-title {
+      font-size: 1rem;
+      top: 10px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.3); /* Improve readability */
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  }
+  

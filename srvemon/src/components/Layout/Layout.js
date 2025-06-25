@@ -19,7 +19,9 @@ function Layout({ children }) {
     <>
       <Header shrunk={shrunk} />
       <Nav shrunk={shrunk} />
-      <div style={{ marginTop: shrunk ? 50 : 90 /* adjust as needed for offset */ }}>
+      {/* <div style={{ marginTop: shrunk ? 50 : 90 /* adjust as needed for offset */ }}> */}
+      <div style={{ marginTop: window.innerWidth < 600 ? (shrunk ? 40 : 80) : (shrunk ? 50 : 90) }}>
+
         {children}
       </div>
     </>

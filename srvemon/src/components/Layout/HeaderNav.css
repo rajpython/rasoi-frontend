@@ -207,3 +207,42 @@
     }
   }
   
+  @media (max-width: 600px) {
+    .header {
+      height: 50px !important;
+      padding: 0 0.3rem;
+      z-index: 1000;
+    }
+  
+    .nav {
+      top: 50px !important;
+      height: auto;
+      padding: 0.25rem 0.3rem;
+      z-index: 999;
+    }
+  
+    .logo {
+      height: 24px;
+    }
+  
+    .site-title {
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+  
+    .nav-list a {
+      font-size: 0.85rem;
+      padding: 0.25rem;
+    }
+  
+    .header-right .reserve-button {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.8rem;
+    }
+  
+    .nav-list {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+  
