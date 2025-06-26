@@ -115,7 +115,7 @@
   @media (max-width: 900px) {
     .hero {
       flex-direction: column;
-      margin-top: 150px;
+      margin-top: 125px;
       height: auto;
     }
   
