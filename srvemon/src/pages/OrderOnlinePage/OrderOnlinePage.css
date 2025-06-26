@@ -156,7 +156,7 @@
       grid-template-columns: 1fr;
     }
     .menu-grid > .menu-card:nth-child(1) {
-      margin-top: 15px;
+      margin-top: 40px;
     }
   
     .menu-card input[type="number"] {
