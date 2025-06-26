@@ -120,7 +120,7 @@
   
     .hero-image {
       width: 100vw;
-      height: 220px; /* was 180px */
+      height: 250px; /* was 180px */
       object-fit: cover;  /* was fill */
       object-position: top center;  /* adjust focus */
     }
