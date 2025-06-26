@@ -112,3 +112,23 @@
     }
   }
   
+  @media (max-width: 900px) {
+    .hero {
+      flex-direction: column;
+      height: auto;
+    }
+  
+    .hero-image {
+      width: 100vw;
+      height: 220px; /* was 180px */
+      object-fit: cover;  /* was fill */
+      object-position: top center;  /* adjust focus */
+    }
+  
+    .hero-text {
+      width: 100vw;
+      padding: 1.2rem 1rem;
+      background: #fff;
+    }
+  }
+  

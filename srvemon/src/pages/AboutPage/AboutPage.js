@@ -62,7 +62,7 @@ export default function AboutPage() {
               <div className="mantra-gap"></div>
               <blockquote className="mantra">
                 “Duniya mein rehna hai toh <b>chaat khao pyaron!</b>”<br />
-                <span>— धन्नो बन्नो के मिर्चफुर्तीले अंदाजोमिजाज़ का राज</span>
+                <span>— धन्नो बन्नो की चोखी शोख़ी का राज</span>
               </blockquote>
                 {/* No dacoits allowed line */}
               

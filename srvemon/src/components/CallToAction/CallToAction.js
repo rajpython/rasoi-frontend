@@ -17,7 +17,7 @@ function CallToAction() {
       <div className="hero-text">
         <h1 className="hero-heading">🧂 <em>यूपी के ठाठ बा। गोरखपुर में चाट बा!</em> 🧂</h1>
         <p className="hero-description">
-          At <strong>Chaat-Nath Math </strong>, ancient recipes flirt shamelessly with modern taste buds.  
+          At our <strong>चाटनाथ मठ</strong>, ancient recipes flirt shamelessly with modern taste buds.  
           We blend the <em>soul of Banaras</em>, <em>spice of Indore</em>, and <em>swagger of Delhi</em> — all on a single thaali.
         </p>
         <p className="hero-mission">
