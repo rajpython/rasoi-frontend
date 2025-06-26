@@ -143,6 +143,9 @@
   
   /* Responsive grid adjustments */
   @media (max-width: 1024px) {
+    .order-page {
+      margin-top: 40px;
+    }
     .menu-grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -156,7 +159,7 @@
       grid-template-columns: 1fr;
     }
     .menu-grid > .menu-card:nth-child(1) {
-      margin-top: 40px;
+      margin-top: 15px;
     }
   
     .menu-card input[type="number"] {
