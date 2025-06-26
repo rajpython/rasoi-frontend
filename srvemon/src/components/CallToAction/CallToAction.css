@@ -115,13 +115,13 @@
   @media (max-width: 900px) {
     .hero {
       flex-direction: column;
-      margin-top: 120px;
+      margin-top: 150px;
       height: auto;
     }
   
     .hero-image {
       width: 100vw;
-      height: 380px; /* was 180px */
+      height: 270px; /* was 180px */
       object-fit: cover;  /* was fill */
       object-position: top center;  /* adjust focus */
     }
