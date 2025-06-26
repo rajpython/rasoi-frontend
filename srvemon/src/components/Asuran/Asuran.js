@@ -11,7 +11,7 @@ function Asuran() {
         <p>Ph: +91 8299123339; email: dhannobannokirasoi@gmail.com</p>
       </p> 
       <h3>
-      जो अइहो अ खइहो त चाटी चाटी के बउरा जइहो!
+      जो अइहो अ खइहो त चाट चाट के बउरा जइहो!
       </h3>
       {/* Possibly an image or more details */}
     </section>
