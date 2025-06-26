@@ -144,7 +144,7 @@
   /* Responsive grid adjustments */
   @media (max-width: 1024px) {
     .order-page {
-      margin-top: 100px;
+      margin-top: 120px;
     }
     .menu-grid {
       grid-template-columns: repeat(2, 1fr);
