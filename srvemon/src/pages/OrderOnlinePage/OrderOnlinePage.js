@@ -116,12 +116,27 @@ function OrderOnlinePage() {
                     <p><strong>₹{item.price}</strong></p>
                     <label>
                       Quantity:
-                      <input
+                      {/* <input
                         type="number"
                         min="1"
                         value={quantities[item.id] || 1}
                         onChange={(e) => handleQuantityChange(item.id, e.target.value)}
+                      /> */}
+                      <input
+                        type="number"
+                        min="1"
+                        step="1"                      // 👈 Add this
+                        inputMode="numeric"           // 👈 Helps mobile show numeric keypad
+                        pattern="[0-9]*"              // 👈 Hints numeric-only input
+                        value={quantities[item.id] || 1}
+                        onChange={(e) => handleQuantityChange(item.id, e.target.value)}
                       />
+                      <div className="quantity-buttons">
+                        <button type="button" onClick={() => handleQuantityChange(item.id, (quantities[item.id] || 1) - 1)}>-</button>
+                        <button type="button" onClick={() => handleQuantityChange(item.id, (quantities[item.id] || 1) + 1)}>+</button>
+                      </div>
+
+
                     </label>
                     <button onClick={() => handleAddToCart(item)}>Add to Cart</button>
                   </div>

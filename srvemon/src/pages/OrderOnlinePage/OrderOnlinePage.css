@@ -141,6 +141,26 @@
     background-color: #0056b3;
   }
   
+  .quantity-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 0.4rem;
+  }
+  
+  .quantity-buttons button {
+    background: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    padding: 0.25rem 0.7rem;
+    cursor: pointer;
+  }
+  
+
+
+
+
   /* Responsive grid adjustments */
   @media (max-width: 1024px) {
     .order-page {
