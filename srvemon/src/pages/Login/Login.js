@@ -1,6 +1,9 @@
+
+
+
 // src/pages/Login.js
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { loginUser } from "../../api/authApi";
 import { AuthContext } from "../../context/AuthContext";
 import { useDispatch } from "react-redux";
@@ -9,11 +12,15 @@ import "./Login.css";
 import BASE_URL from "../../apiConfig";
 
 function Login() {
+  const location = useLocation();
   const [form, setForm] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
   const dispatch = useDispatch();
+
+  // This will check if we're redirected here with a success message
+  const resetMessage = location.state?.resetMessage;
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -52,6 +59,7 @@ function Login() {
       <form className="login-form" onSubmit={handleSubmit}>
         <h2 className="login-title">Login</h2>
 
+        {resetMessage && <p className="login-success">{resetMessage}</p>}
         {error && <p className="login-error">{error}</p>}
 
         <div className="form-group">
@@ -78,6 +86,26 @@ function Login() {
           />
         </div>
 
+        {/* --- FORGOT PASSWORD LINK --- */}
+        <div style={{ textAlign: "center", marginBottom: "12px" }}>
+          <button
+            type="button"
+            className="forgot-password-link"
+            style={{
+              background: "none",
+              border: "none",
+              color: "#0077cc",
+              textDecoration: "underline",
+              cursor: "pointer",
+              padding: 0,
+              fontSize: "0.95em"
+            }}
+            onClick={() => navigate("/reset-password")}
+          >
+            Forgot password? Reset
+          </button>
+        </div>
+
         <button type="submit" className="login-button">Login</button>
 
         <p className="register-prompt">
@@ -96,3 +124,4 @@ function Login() {
 }
 
 export default Login;
+

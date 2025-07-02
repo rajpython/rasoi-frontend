@@ -6,6 +6,8 @@ import HomePage from "./pages/HomePage";
 import BookingPage from "./pages/BookingPage/BookingPage";
 import MenuPage from "./pages/MenuPage/MenuPage";
 import Login from "./pages/Login/Login";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
+import ResetPasswordConfirm from "./pages/ResetPassword/ResetPasswordConfirm";
 import Register from "./pages/Register/Register";
 import ConfirmedBooking from "./pages/ConfirmedBooking/ConfirmedBooking";
 import OrderOnlinePage from "./pages/OrderOnlinePage/OrderOnlinePage";
@@ -32,6 +34,8 @@ function Main() {
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/order-online" element={<OrderOnlinePage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/reset-password/:uid/:token" element={<ResetPasswordConfirm />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/cart" element={<CartPage />} />
