@@ -1,4 +1,6 @@
 
+
+
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
@@ -22,7 +24,7 @@ function CustomerReviews() {
   const sliderRef = useRef(null);
   const navigate = useNavigate();
 
-  const { user } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   const isAuthenticated = !!user;
 
   useEffect(() => {
@@ -122,12 +124,12 @@ function CustomerReviews() {
       return;
     }
     try {
-      const accessToken = localStorage.getItem("accessToken");
+      console.log('User:', user, 'Token:', token);
       const res = await fetch(`${BASE_URL}/restaurante/customer-reviews/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
+          Authorization: token ? `Token ${token}` : '',
         },
         body: JSON.stringify({
           feedback: formData.feedback,

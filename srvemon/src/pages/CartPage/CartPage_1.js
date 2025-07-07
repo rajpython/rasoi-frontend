@@ -1,12 +1,13 @@
 
 // src/pages/CartPage.js
 
-import React, { useEffect} from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   setCart, updateQuantity, removeItem,
   saveGuestCart, loadGuestCart
 } from '../../slices/cartSlice';
+import { AuthContext } from '../../context/AuthContext';
 import { useMenu } from '../../context/MenuContext';
 import { useNavigate } from 'react-router-dom';
 import OrderPlacementSection from '../../components/OrderPlacementSection';
@@ -14,7 +15,7 @@ import "./CartPage.css";
 import BASE_URL from '../../apiConfig';
 
 function CartPage() {
-  const accessToken = localStorage.getItem("accessToken");
+  const { token } = useContext(AuthContext);
   const cartItems = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
   const { menuItems } = useMenu();
@@ -23,10 +24,10 @@ function CartPage() {
   // Load cart on mount
   useEffect(() => {
     async function fetchOrLoadCart() {
-      if (accessToken) {
+      if (token) {
         try {
           const res = await fetch(`${BASE_URL}/restaurante/cart/menu-items`, {
-            headers: { Authorization: `Bearer ${accessToken}`, }
+            headers: { Authorization: `Token ${token}` }
           });
           const data = await res.json();
           dispatch(setCart(data.results || data));
@@ -38,17 +39,17 @@ function CartPage() {
       }
     }
     fetchOrLoadCart();
-  }, [dispatch, accessToken]);
+  }, [dispatch, token]);
 
   // Sync guest cart to localStorage
   useEffect(() => {
-    if (!accessToken) {
+    if (!token) {
       dispatch(saveGuestCart(cartItems));
     }
-  }, [cartItems, accessToken, dispatch]);
+  }, [cartItems, token, dispatch]);
 
   const handleUpdateQuantity = async (item, newQuantity) => {
-    if (!accessToken) {
+    if (!token) {
       dispatch(updateQuantity({
         menuitem: item.menuitem,
         quantity: newQuantity,
@@ -60,13 +61,13 @@ function CartPage() {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`
+          Authorization: `Token ${token}`
         },
         body: JSON.stringify({ quantity: newQuantity })
       });
       // Refresh cart from backend
       const res = await fetch(`${BASE_URL}/restaurante/cart/menu-items`, {
-        headers: { Authorization: `Bearer ${accessToken}` }
+        headers: { Authorization: `Token ${token}` }
       });
       const data = await res.json();
       dispatch(setCart(data.results || data));
@@ -76,7 +77,7 @@ function CartPage() {
   };
 
   const handleRemoveItem = async (item) => {
-    if (!accessToken) {
+    if (!token) {
       dispatch(removeItem({ menuitem: item.menuitem }));
       return;
     }
@@ -84,12 +85,12 @@ function CartPage() {
       await fetch(`${BASE_URL}/restaurante/cart/menu-items/${item.id}`, {
         method: "DELETE",
         headers: {
-         Authorization: `Bearer ${accessToken}`
+          Authorization: `Token ${token}`
         }
       });
       // Refresh cart from backend
       const res = await fetch(`${BASE_URL}/restaurante/cart/menu-items`, {
-        headers: { Authorization: `Bearer ${accessToken}` }
+        headers: { Authorization: `Token ${token}` }
       });
       const data = await res.json();
       dispatch(setCart(data.results || data));
@@ -170,13 +171,13 @@ function CartPage() {
         </>
       )}
 
-      {accessToken && cartItems.length > 0 && (
+      {token && cartItems.length > 0 && (
         <OrderPlacementSection
           total={total}
           onOrderPlaced={(orderData) => navigate("/order-confirmation", { state: orderData })}
         />
       )}
-      {!accessToken && cartItems.length > 0 && (
+      {!token && cartItems.length > 0 && (
         <button className="remove-btn" onClick={handlePromptLogin}>
           Login or Register to Place Your Order
         </button>

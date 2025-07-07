@@ -92,39 +92,41 @@ export const loadGuestCart = () => dispatch => {
 };
 
 // Thunk: Merge guest cart with backend after login
-export const mergeGuestCartWithBackend = (accessToken) => async (dispatch, getState) => {
-    const state = getState();
-    const guestCartItems = state.cart.items;
-  
-    if (!accessToken || !guestCartItems.length) return;
-  
-    for (let item of guestCartItems) {
-      try {
-        await fetch(`${BASE_URL}/restaurante/cart/menu-items`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-          },
-          body: JSON.stringify({
-            menuitem: item.menuitem,
-            quantity: item.quantity,
-          }),
-        });
-      } catch (err) {
-        console.error("Error merging guest cart:", err);
-      }
-    }
-  
+export const mergeGuestCartWithBackend = (token) => async (dispatch, getState) => {
+  const state = getState();
+  const guestCartItems = state.cart.items;
+
+  if (!token || !guestCartItems.length) return;
+
+  // For each guest cart item, POST to backend
+  for (let item of guestCartItems) {
     try {
-      const res = await fetch(`${BASE_URL}/restaurante/cart/menu-items`, {
-        headers: { Authorization: `Bearer ${accessToken}` }
+      await fetch(`${BASE_URL}/restaurante/cart/menu-items`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${token}`,
+        },
+        body: JSON.stringify({
+          menuitem: item.menuitem,
+          quantity: item.quantity,
+        }),
       });
-      const data = await res.json();
-      dispatch(setCart(data.results || data));
-      localStorage.removeItem('guest_cart');
     } catch (err) {
-      console.error("Error refreshing backend cart:", err);
+      console.error("Error merging guest cart:", err);
     }
+  }
+
+  // After merge, fetch backend cart and update Redux
+  try {
+    const res = await fetch(`${BASE_URL}/restaurante/cart/menu-items`, {
+      headers: { Authorization: `Token ${token}` }
+    });
+    const data = await res.json();
+    dispatch(setCart(data.results || data));
+    // Clear guest cart from localStorage
+    localStorage.removeItem('guest_cart');
+  } catch (err) {
+    console.error("Error refreshing backend cart:", err);
+  }
 };
-  

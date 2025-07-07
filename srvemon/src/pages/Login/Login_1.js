@@ -1,3 +1,6 @@
+
+
+
 // src/pages/Login.js
 import React, { useState, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -6,6 +9,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { useDispatch } from "react-redux";
 import { mergeGuestCartWithBackend } from "../../slices/cartSlice";
 import "./Login.css";
+import BASE_URL from "../../apiConfig";
 
 function Login() {
   const location = useLocation();
@@ -15,29 +19,40 @@ function Login() {
   const { login } = useContext(AuthContext);
   const dispatch = useDispatch();
 
+  // This will check if we're redirected here with a success message
   const resetMessage = location.state?.resetMessage;
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
     try {
-      // JWT login: get tokens
-      const tokens = await loginUser(form); // returns { access, refresh }
-
-      // Call context login, which will store tokens and fetch user profile
-      await login(tokens);
-
-      // Optionally, after login, merge guest cart with backend
-      await dispatch(mergeGuestCartWithBackend(localStorage.getItem("accessToken")));
-
+      const token = await loginUser(form);
+  
+      const profileRes = await fetch(`${BASE_URL}/restaurante/me/`, {
+        headers: {
+          Authorization: `Token ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+  
+      if (!profileRes.ok) {
+        throw new Error("Failed to fetch profile");
+      }
+  
+      const userData = await profileRes.json();
+      login(userData, token);  // ✅ Send full user data to context
+  
+      await dispatch(mergeGuestCartWithBackend(token));
+  
       navigate("/");
     } catch (err) {
       setError("Login failed: " + err.message);
     }
   };
+  
 
   return (
     <div className="login-page">
@@ -109,3 +124,4 @@ function Login() {
 }
 
 export default Login;
+

@@ -1,8 +1,9 @@
 // src/pages/OrderOnlinePage.js
 
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCart, addItem, saveGuestCart, loadGuestCart } from '../../slices/cartSlice';
+import { AuthContext } from '../../context/AuthContext';
 import { useMenu } from "../../context/MenuContext";
 import "./OrderOnlinePage.css"
 import { CATEGORY_ID_TO_NAME, CATEGORY_ORDER } from '../MenuPage/MenuPage';
@@ -13,16 +14,16 @@ function OrderOnlinePage() {
   const { menuItems, loading } = useMenu();
   const [quantities, setQuantities] = useState({});
   const dispatch = useDispatch();
-  const accessToken = localStorage.getItem("accessToken");
+  const { token } = useContext(AuthContext);
   const cartItems = useSelector(state => state.cart.items);
 
   // Load cart on mount
   useEffect(() => {
     async function fetchOrLoadCart() {
-      if (accessToken) {
+      if (token) {
         try {
           const res = await fetch(`${BASE_URL}/restaurante/cart/menu-items`, {
-            headers: { Authorization: `Bearer ${accessToken}` },
+            headers: { Authorization: `Token ${token}` },
           });
           const data = await res.json();
           dispatch(setCart(data.results || data));
@@ -34,13 +35,13 @@ function OrderOnlinePage() {
       }
     }
     fetchOrLoadCart();
-  }, [dispatch, accessToken]);
+  }, [dispatch, token]);
 
   useEffect(() => {
-    if (!accessToken) {
+    if (!token) {
       dispatch(saveGuestCart(cartItems));
     }
-  }, [cartItems, accessToken, dispatch]);
+  }, [cartItems, token, dispatch]);
 
   const handleQuantityChange = (id, value) => {
     setQuantities(prev => ({
@@ -52,7 +53,7 @@ function OrderOnlinePage() {
   const handleAddToCart = async (item) => {
     const quantity = quantities[item.id] || 1;
 
-    if (!accessToken) {
+    if (!token) {
       dispatch(addItem({
         menuitem: item.id,
         title: item.title,
@@ -68,7 +69,7 @@ function OrderOnlinePage() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`
+          Authorization: `Token ${token}`
         },
         body: JSON.stringify({
           menuitem: item.id,
@@ -76,7 +77,7 @@ function OrderOnlinePage() {
         })
       });
       const res = await fetch(`${BASE_URL}/restaurante/cart/menu-items`, {
-        headers: { Authorization: `Bearer ${accessToken}` }
+        headers: { Authorization: `Token ${token}` }
       });
       const data = await res.json();
       dispatch(setCart(data.results || data));

@@ -1,39 +1,55 @@
-
-// File: src/context/AuthContext.js
+// src/context/AuthContext.js
 import React, { createContext, useState, useEffect } from "react";
+import { getProfile, logoutUser, refreshAccessToken } from "../api/authApi";
 
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null); // profile object, or null
 
+  // Load tokens/profile from localStorage on mount
   useEffect(() => {
-    const storedUser = localStorage.getItem("authUser");
-    if (storedUser) {
-      try {
-        setUser(JSON.parse(storedUser));
-      } catch (e) {
-        console.error("Error parsing stored user:", e);
-        setUser(null);
-      }
+    const accessToken = localStorage.getItem("accessToken");
+    const refreshToken = localStorage.getItem("refreshToken");
+    if (accessToken && refreshToken) {
+      // Optionally, you can re-fetch user profile here for extra safety
+      getProfile()
+        .then((profile) => setUser(profile))
+        .catch(() => setUser(null));
     }
   }, []);
 
-  const login = (userData, token) => {
-    const userWithToken = { ...userData, token };
-    localStorage.setItem("authToken", token);
-    localStorage.setItem("authUser", JSON.stringify(userWithToken));
-    setUser(userWithToken);
+  // Login: store tokens and user profile
+  const login = async ({ access, refresh }) => {
+    localStorage.setItem("accessToken", access);
+    localStorage.setItem("refreshToken", refresh);
+    try {
+      const profile = await getProfile();
+      setUser(profile);
+    } catch (err) {
+      setUser(null);
+      throw err;
+    }
   };
 
+  // Logout: clear everything
   const logout = () => {
-    localStorage.removeItem("authToken");
-    localStorage.removeItem("authUser");
+    logoutUser(); // just clears tokens from localStorage
     setUser(null);
   };
 
+  // Optionally, add a method to refresh access token and update state
+  const refreshToken = async () => {
+    try {
+      await refreshAccessToken();
+      // Optionally, re-fetch profile if you wish
+    } catch (err) {
+      logout();
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, token: user?.token, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, refreshToken }}>
       {children}
     </AuthContext.Provider>
   );

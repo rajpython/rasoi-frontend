@@ -1,7 +1,8 @@
 
 // src/components/OrderPlacementSection.js
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import { useDispatch } from "react-redux";
 import { clearCart } from "../slices/cartSlice"; // <-- import clearCart
 import BASE_URL from "../apiConfig";
@@ -36,6 +37,7 @@ function OrderPlacementSection({ total, onOrderPlaced }) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const { token } = useContext(AuthContext);
   const dispatch = useDispatch();
 
 
@@ -84,12 +86,11 @@ function OrderPlacementSection({ total, onOrderPlaced }) {
         delivery_time_slot: form.timeSlot,
         date: form.date,
       };
-      const accessToken = localStorage.getItem("accessToken");
       const res = await fetch(`${BASE_URL}/restaurante/orders`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+          Authorization: `Token ${token}`
         },
         body: JSON.stringify(payload)
       });
