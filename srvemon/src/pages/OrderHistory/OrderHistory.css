@@ -1,0 +1,28 @@
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+  }
+  .order-table th, .order-table td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: center;
+  }
+  .order-table th {
+    background-color: #f4f4f4;
+  }
+  .order-table tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+  .order-table button {
+    background-color: #495E57;
+    color: #FBDABB;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .order-table button:hover {
+    background-color: #354943;
+  }
+  

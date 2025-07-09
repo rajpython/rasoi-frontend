@@ -1,5 +1,6 @@
 
 import BASE_URL from '../apiConfig';
+import { fetchWithAuth } from './authApi';
 
 
 export async function fetchAPI(date) {
@@ -13,18 +14,21 @@ export async function fetchAPI(date) {
       return [];
     }
   }
-  
-  export async function submitAPI(formData) {
-    try {
-      const response = await fetch(`${BASE_URL}/restaurante/booking/`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      return response.ok;
-    } catch (error) {
-      console.error("Error submitting reservation:", error);
-      return false;
-    }
+
+
+
+export async function submitAPI(formData) {
+  try {
+    const response = await fetchWithAuth(`${BASE_URL}/restaurante/booking/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+    return response.ok;
+  } catch (error) {
+    console.error("Error submitting reservation:", error);
+    return false;
   }
+}
+
   

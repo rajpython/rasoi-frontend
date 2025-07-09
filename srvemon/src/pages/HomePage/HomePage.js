@@ -1,15 +1,15 @@
 // src/pages/HomePage.js
 import React, {useEffect} from 'react';
 
-import Specials from '../components/Specials/Specials';
+import Specials from '../../components/Specials/Specials';
 // import CustomersSay from '../components/CustomersSay';
-import CustomerReviews from '../components/CustomerReviews/CustomerReviews';
+import CustomerReviews from '../../components/CustomerReviews/CustomerReviews';
 // import ContinousCarousel from '../components/ContinousCarousel';
 
-import Asuran from '../components/Asuran/Asuran';
+import Asuran from '../../components/Asuran/Asuran';
 // import ImageSlideshow from '../components/ImageSlideShow/ImageSlideShow';
 // import ContinuousFullScreenCarousel from '../components/ContinuousFullScreenCarousel';
-import SlidingPauseCarousel from '../components/SlidingPauseCarousel/SlidingPauseCarousel';
+import SlidingPauseCarousel from '../../components/SlidingPauseCarousel/SlidingPauseCarousel';
 import "./HomePage.css"
 
 

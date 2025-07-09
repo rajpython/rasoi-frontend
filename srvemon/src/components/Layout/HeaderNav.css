@@ -266,3 +266,62 @@
     }
   }
   
+
+  /* Drop down css */
+
+  /* Dropdown styles */
+.dropdown {
+  position: relative;
+}
+
+
+/* === Navbar dropdown fixes === */
+.dropdown-title {
+  color: #FBDABB; /* Same as other nav links */
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dropdown:hover .dropdown-title {
+  text-decoration: underline;
+}
+
+/* Ensure dropdown always overlays carousel or any section below */
+.dropdown-menu {
+  position: absolute;
+  background: white;
+  min-width: 180px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 9999; /* higher than your nav, header, or carousel */
+  top: 100%;
+  left: 0;
+  padding: 0;
+  list-style: none;
+  display: none;
+}
+
+.dropdown-menu li {
+  border-bottom: 1px solid #f0f0f0;
+}
+.dropdown-menu li:last-child {
+  border-bottom: none;
+}
+.dropdown-menu li a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  padding: 0.7em 1em;
+}
+.dropdown-menu li a:hover {
+  background: #f7f7f7;
+}
+
+/* Show on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Ensure nav never clips dropdown */
+.nav {
+  overflow: visible;
+}

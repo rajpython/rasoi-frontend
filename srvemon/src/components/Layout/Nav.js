@@ -1,10 +1,11 @@
+
+
 // src/components/Nav.js
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import CartIndicator from '../CartIndicator/CartIndicator';
-// import './Nav.css';
-import "./HeaderNav.css"
+import "./HeaderNav.css";
 
 const toTitleCase = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
@@ -25,18 +26,23 @@ function Nav({ shrunk }) {
         <li><Link to="/menu">Menu</Link></li>
         <li><Link to="/reservations">Reservations</Link></li>
         <li><Link to="/order-online">Order Online</Link></li>
+
         {user ? (
           <>
-            <li><Link to="/profile">Profile</Link></li>
+            {/* 🆕 Dropdown container */}
+            <li className="dropdown">
+              <span className="dropdown-title">{toTitleCase(user.first_name)}'s' Stuff</span>
+              <ul className="dropdown-menu">
+                <li><Link to="/my-reservations">Reservations</Link></li>
+                <li><Link to="/my-orders">Orders</Link></li>
+                <li><Link to="/my-reviews">Reviews</Link></li>
+                <li><Link to="/profile">Profile</Link></li>
+              </ul>
+            </li>
+
             <li className="nav-user">
-              <div>
-                Welcome, {toTitleCase(user.first_name)}
-                <div
-                  className="nav-logout"
-                  onClick={handleLogout}
-                >
-                  (Log Out)
-                </div>
+              <div className="nav-logout" onClick={handleLogout}>
+                Log Out
               </div>
             </li>
           </>

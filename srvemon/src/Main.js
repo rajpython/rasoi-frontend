@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/HomePage/HomePage";
 import BookingPage from "./pages/BookingPage/BookingPage";
 import MenuPage from "./pages/MenuPage/MenuPage";
 import Login from "./pages/Login/Login";
@@ -16,6 +16,9 @@ import ProfilePage from "./pages/ProfilePage";
 import ManageReservationPage from "./pages/ManageReservationPage";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import AboutPage from "./pages/AboutPage/AboutPage";
+import ReservationHistory from "./pages/ReservationHistory/ReservationHistory";
+import OrderHistory from "./pages/OrderHistory/OrderHistory";
+import CustomerReviewHistory from "./pages/CustomerReviewHistory/CustomerReviewHistory";
 import Layout from "./components/Layout/Layout";
 import "./App.css"
 
@@ -42,6 +45,9 @@ function Main() {
         <Route path="/confirmation" element={<ConfirmedBooking />} />
         <Route path="/manage-reservation/:ref" element={<ManageReservationPage />} />
         <Route path="/order-confirmation" element={<OrderConfirmation />} />
+        <Route path="/my-reservations" element={<ReservationHistory />} />
+        <Route path="/my-orders" element={<OrderHistory />} />
+        <Route path="/my-reviews" element={<CustomerReviewHistory />} />
       </Routes>
     </Layout>
   );

@@ -65,8 +65,42 @@ export const getSelectableStartDate = () => {
 
   // src/utils/dateFormat.js
 
+  // export function formatDate(dateString) {
+  //   if (!dateString) return "";
+  //   const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  //   return new Date(dateString).toLocaleDateString(undefined, options);
+  // };
+
+
+  // export function formatDate(dateString) {
+  //   if (!dateString) return "";
+  //   const [year, month, day] = dateString.split("-");
+  //   const dateObj = new Date(year, month - 1, day); // JS month is 0-indexed
+  //   const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  //   return dateObj.toLocaleDateString(undefined, options);
+  // }
+  
+  // export function formatDate(dateString) {
+  //   if (!dateString) return "";
+  //   const cleaned = dateString.includes(".") 
+  //     ? dateString.split(".")[0] + "Z" 
+  //     : dateString;
+  //   const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  //   return new Date(cleaned).toLocaleDateString(undefined, options);
+  // }
+  
+
   export function formatDate(dateString) {
     if (!dateString) return "";
+  
+    // Get just the date portion if it's a full datetime
+    const datePart = dateString.split("T")[0];
+    const [year, month, day] = datePart.split("-").map(Number);
+  
+    // Create a date as LOCAL time (not UTC)
+    const localDate = new Date(year, month - 1, day);
+  
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
+    return localDate.toLocaleDateString(undefined, options);
+  }
+  

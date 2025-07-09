@@ -1,0 +1,19 @@
+.review-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .review-table th, .review-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  .review-table th {
+    background-color: #f4f4f4;
+    text-align: left;
+  }
+  .review-table tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+  .review-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  

@@ -52,16 +52,6 @@ function ProfilePage() {
       profile
     };
 
-
-    // try {
-    //   await updateProfile(payload);
-    //   setMessage("Profile updated successfully!");
-    //   setError("");
-    // } catch (err) {
-    //   setError("Failed to update profile.");
-    //   setMessage("");
-    // }
-
     try {
         await updateProfile(payload);
         alert("Profile updated successfully!");

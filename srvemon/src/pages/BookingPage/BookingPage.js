@@ -31,13 +31,27 @@ function BookingPage() {
 // Inside your component
   
 
+  // const submitForm = async (formData) => {
+  //   const success = await submitAPI(formData);
+  //   if (success) {
+  //     setReservationData(formData);
+  //     navigate("/confirmation");
+  //   }
+  // };
+
   const submitForm = async (formData) => {
-    const success = await submitAPI(formData);
-    if (success) {
-      setReservationData(formData);
-      navigate("/confirmation");
+    try {
+      const success = await submitAPI(formData);
+      if (success) {
+        setReservationData(formData);
+        navigate("/confirmation");
+      }
+    } catch (err) {
+      alert(err.message);  // show session expired message
+      navigate("/login");
     }
   };
+  
 
 
 

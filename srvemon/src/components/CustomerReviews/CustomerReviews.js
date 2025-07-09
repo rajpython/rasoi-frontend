@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import './CustomerReviews.css';
 import BASE_URL from '../../apiConfig';
@@ -240,7 +240,7 @@ function CustomerReviews() {
             </button>
           ) : (
             <div className="login-message">
-              To submit a review, you must be logged in.
+              To submit a review, you must <Link to="/login">Login</Link>.
             </div>
           )
         )}

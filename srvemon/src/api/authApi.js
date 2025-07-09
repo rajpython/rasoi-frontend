@@ -67,7 +67,7 @@ export async function refreshAccessToken() {
 }
 
 // ---- Authenticated fetch helper ----
-async function fetchWithAuth(url, options = {}, retry = true) {
+export async function fetchWithAuth(url, options = {}, retry = true) {
   let accessToken = localStorage.getItem("accessToken");
   let headers = options.headers || {};
   headers["Authorization"] = `Bearer ${accessToken}`;
