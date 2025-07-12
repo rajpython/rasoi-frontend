@@ -131,4 +131,11 @@
       right: 20px;
     }
   }
+
+  @media (max-width: 600px) {
+    .chaatgpt-chat-window {
+      resize: none;
+      cursor: default;
+    }
+  }
   
