@@ -44,7 +44,7 @@ const ChaatGPTWidget = () => {
     setMessages((prev) => [...prev, { role: "user", content: input }]);
     setInput("");
   
-    const res = await fetchWithAuth("http://127.0.0.1:9100/restaurante/api/chaatbaat/", {
+    const res = await fetchWithAuth(`${BASE_URL}/restaurante/api/chaatbaat/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: input })
