@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import chaatGPTLogo from "../../assets/chaatGPT-logo.png";
 import { fetchWithAuth } from "../../api/authApi";
+import BASE_URL from '../../apiConfig';
 import "./ChaatGPTWidget.css";
 
 import Draggable from "react-draggable";
