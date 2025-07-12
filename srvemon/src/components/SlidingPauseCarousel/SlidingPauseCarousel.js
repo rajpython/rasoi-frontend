@@ -27,6 +27,10 @@ const slides = [
     title: "தெற்கு சுவைகள்"
   },
   {
+    src: require("../../assets/BilluShahrukh.png"),
+    title: "अनोखा लिट्टी चोखा"
+  },
+  {
     src: require("../../assets/customers.png"),
     title: "Golgappa Gossips"
   },

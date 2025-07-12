@@ -39,6 +39,7 @@ import Footer from './components/Footer/Footer';
 import Main from './Main';
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import ChaatGPTWidget from "./components/ChaatGPTWidget/ChaatGPTWidget";
 
 // Load Stripe publishable key from .env
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
@@ -48,6 +49,7 @@ function App() {
     <>
       <Elements stripe={stripePromise}>
         <Main />
+        <ChaatGPTWidget />
         <Footer />
       </Elements>
     </>

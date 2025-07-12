@@ -46,6 +46,7 @@ function HomePage() {
         
 
       <Asuran />
+
     </main>
   );
 }

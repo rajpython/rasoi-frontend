@@ -12,21 +12,7 @@ function ReservationHistory() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   async function fetchReservations() {
-  //     setLoading(true);
-  //     try {
-  //       const res = await fetchWithAuth(`${BASE_URL}/restaurante/booking/`);
-  //       const data = await res.json();
-  //       setReservations(data.results || data);
-  //     } catch {
-  //       setReservations([]);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-  //   fetchReservations();
-  // }, []);
+
 
   useEffect(() => {
     async function fetchAllReservations(url = `${BASE_URL}/restaurante/booking/`, accum = []) {

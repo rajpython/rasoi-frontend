@@ -1,0 +1,134 @@
+/* src/components/ChaatGPTWidget.css */
+
+  .chaatgpt-floating-button {
+    position: fixed;
+    bottom: 40px;  /* more margin from bottom */
+    right: 40px;   /* more margin from right */
+    width: 120px;
+    height: 120px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+  }
+  
+  .chaatgpt-floating-button:hover {
+    transform: scale(2); /* scale to 2× on hover */
+  }
+  
+  .chaatgpt-floating-button img {
+    width: 90%;
+    height: auto;
+    display: block;
+  }
+  
+
+
+
+  .chaatgpt-chat-window {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 33vw;
+    height: 66vh;
+    background: #fdf8e4;
+    color: #333;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    overflow: auto;
+    resize: both;
+    cursor: nw-resize;
+    min-width: 250px;
+    min-height: 200px;
+    max-width: 95vw;
+    max-height: 95vh;
+  }
+  
+  /* Crisp diagonal SVG grip in the northwest corner */
+
+  /* Full-screen variant stays light-themed */
+  .chaatgpt-chat-window.full-screen {
+    width: 95vw;
+    height: 95vh;
+  }
+  
+  .chat-header {
+    background: #f6eecb;
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #b0172f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .chat-header .controls button {
+    background: none;
+    color: #b0172f;
+    border: none;
+    font-size: 1.2em;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .chat-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+  }
+  
+  .message.user {
+    text-align: right;
+    margin-bottom: 8px;
+    font-style: italic;
+    color: #b0172f;
+  }
+  
+  .message.bot {
+    text-align: left;
+    margin-bottom: 8px;
+    color: #333;
+    border-left: 2px dotted #d8caa3;
+    padding-left: 8px;
+  }
+  
+  .chat-input {
+    display: flex;
+    border-top: 1px solid #d8caa3;
+  }
+  
+  .chat-input input {
+    flex: 1;
+    background: #fff;
+    color: #333;
+    border: none;
+    padding: 10px;
+  }
+  
+  .chat-input button {
+    background: #b0172f;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
+
+  @media (max-width: 600px) {
+    .chaatgpt-floating-button {
+      width: 80px;
+      height: 80px;
+      bottom: 20px;
+      right: 20px;
+    }
+  }
+  

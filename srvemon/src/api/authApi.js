@@ -46,6 +46,7 @@ export async function logoutUser() {
   // If using blacklist, POST to blacklist endpoint as well.
   localStorage.removeItem("accessToken");
   localStorage.removeItem("refreshToken");
+  window.dispatchEvent(new Event("storage"));
   return true;
 }
 
@@ -66,17 +67,40 @@ export async function refreshAccessToken() {
   return data.access;
 }
 
-// ---- Authenticated fetch helper ----
+// // ---- Authenticated fetch helper ----
+// export async function fetchWithAuth(url, options = {}, retry = true) {
+//   let accessToken = localStorage.getItem("accessToken");
+//   let headers = options.headers || {};
+//   headers["Authorization"] = `Bearer ${accessToken}`;
+//   options.headers = headers;
+
+//   let response = await fetch(url, options);
+
+//   if (response.status === 401 && retry) {
+//     // Try refreshing the token and retry request once
+//     try {
+//       accessToken = await refreshAccessToken();
+//       headers["Authorization"] = `Bearer ${accessToken}`;
+//       response = await fetch(url, options);
+//     } catch (err) {
+//       throw new Error("Session expired. Please log in again.");
+//     }
+//   }
+//   return response;
+// }
+
 export async function fetchWithAuth(url, options = {}, retry = true) {
   let accessToken = localStorage.getItem("accessToken");
   let headers = options.headers || {};
-  headers["Authorization"] = `Bearer ${accessToken}`;
+
+  if (accessToken) {
+    headers["Authorization"] = `Bearer ${accessToken}`;
+  }
   options.headers = headers;
 
   let response = await fetch(url, options);
 
-  if (response.status === 401 && retry) {
-    // Try refreshing the token and retry request once
+  if (accessToken && response.status === 401 && retry) {
     try {
       accessToken = await refreshAccessToken();
       headers["Authorization"] = `Bearer ${accessToken}`;
@@ -85,8 +109,10 @@ export async function fetchWithAuth(url, options = {}, retry = true) {
       throw new Error("Session expired. Please log in again.");
     }
   }
+
   return response;
 }
+
 
 // ---- Profile get/update ----
 export async function getProfile() {
