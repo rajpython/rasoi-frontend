@@ -178,7 +178,8 @@ const ChaatGPTWidget = () => {
     const res = await fetchWithAuth(`${process.env.REACT_APP_API_BASE_URL || "https://api.dhannobannokirasoi.com"}/restaurante/api/chaatbaat/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: input })
+      body: JSON.stringify({ message: input }),
+      // credentials: "include"
     });
 
     const reader = res.body.getReader();
