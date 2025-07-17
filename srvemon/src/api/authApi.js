@@ -89,6 +89,32 @@ export async function refreshAccessToken() {
 //   return response;
 // }
 
+// export async function fetchWithAuth(url, options = {}, retry = true) {
+//   let accessToken = localStorage.getItem("accessToken");
+//   let headers = options.headers || {};
+
+//   if (accessToken) {
+//     headers["Authorization"] = `Bearer ${accessToken}`;
+//   }
+//   options.headers = headers;
+
+//   let response = await fetch(url, options);
+
+//   if (accessToken && response.status === 401 && retry) {
+//     try {
+//       accessToken = await refreshAccessToken();
+//       headers["Authorization"] = `Bearer ${accessToken}`;
+//       response = await fetch(url, options);
+//     } catch (err) {
+//       throw new Error("Session expired. Please log in again.");
+//     }
+//   }
+
+//   return response;
+// }
+// #############################
+// SOMETHING NEW TO RESOLVE SESSION ID: OTHERWISE THE ABOVE WORKED FINE
+
 export async function fetchWithAuth(url, options = {}, retry = true) {
   let accessToken = localStorage.getItem("accessToken");
   let headers = options.headers || {};
@@ -96,7 +122,17 @@ export async function fetchWithAuth(url, options = {}, retry = true) {
   if (accessToken) {
     headers["Authorization"] = `Bearer ${accessToken}`;
   }
+
+  // 🚀 NEW: ensure stable session id for anonymous users
+  let anonSessionId = localStorage.getItem("anonSessionId");
+  if (!anonSessionId) {
+    anonSessionId = crypto.randomUUID(); // or use your own uuid lib
+    localStorage.setItem("anonSessionId", anonSessionId);
+  }
+  headers["X-Guest-Id"] = anonSessionId;
+
   options.headers = headers;
+  options.credentials = "include";
 
   let response = await fetch(url, options);
 
@@ -112,6 +148,42 @@ export async function fetchWithAuth(url, options = {}, retry = true) {
 
   return response;
 }
+// #############################
+// EVEN A BETTER WAY OF DOING IT
+
+// export function getOrCreateGuestId() {
+//   let id = localStorage.getItem("guestId");
+//   if (!id) {
+//     id = crypto.randomUUID();
+//     localStorage.setItem("guestId", id);
+//   }
+//   return id;
+// }
+
+// export async function fetchWithAuth(url, options = {}, retry = true) {
+//   let accessToken = localStorage.getItem("accessToken");
+//   let headers = options.headers || {};
+
+//   if (accessToken) {
+//     headers["Authorization"] = `Bearer ${accessToken}`;
+//   } else {
+//     headers["X-Guest-Id"] = getOrCreateGuestId();
+//   }
+
+//   options.headers = headers;
+//   options.credentials = "include";
+
+//   let response = await fetch(url, options);
+
+//   if (accessToken && response.status === 401 && retry) {
+//     accessToken = await refreshAccessToken();
+//     headers["Authorization"] = `Bearer ${accessToken}`;
+//     response = await fetch(url, options);
+//   }
+
+//   return response;
+// }
+// ####################
 
 
 // ---- Profile get/update ----
