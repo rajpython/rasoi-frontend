@@ -44,13 +44,18 @@ import ChaatGPTWidget from "./components/ChaatGPTWidget/ChaatGPTWidget";
 // Load Stripe publishable key from .env
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
+// Detect if we are in an iframe
+const isInIframe = window.self !== window.top;
+
 function App() {
   return (
     <>
       <Elements stripe={stripePromise}>
         <Main />
-        <ChaatGPTWidget />
-        <Footer />
+        {/* <ChaatGPTWidget />
+        <Footer /> */}
+        {!isInIframe && <ChaatGPTWidget />}
+        {!isInIframe && <Footer />}
       </Elements>
     </>
   );

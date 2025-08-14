@@ -121,7 +121,7 @@
     padding: 10px 15px;
     cursor: pointer;
   }
-  
+ 
 
   @media (max-width: 600px) {
     .chaatgpt-floating-button {
@@ -132,6 +132,8 @@
     }
   }
 
+  
+
   @media (max-width: 600px) {
     .chaatgpt-chat-window {
       resize: none;
@@ -139,3 +141,22 @@
     }
   }
   
+
+   
+  .chat-messages,
+  .message {
+    user-select: text;
+    cursor: text;
+  }
+
+  .message.bot a {
+    color: #0077cc;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .message.bot a:hover {
+    color: #004999;
+  }
+
+

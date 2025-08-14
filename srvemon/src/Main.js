@@ -20,7 +20,8 @@ import ReservationHistory from "./pages/ReservationHistory/ReservationHistory";
 import OrderHistory from "./pages/OrderHistory/OrderHistory";
 import CustomerReviewHistory from "./pages/CustomerReviewHistory/CustomerReviewHistory";
 import Layout from "./components/Layout/Layout";
-import "./App.css"
+import BareLayout from "./components/Layout/BareLayout";
+import ChatbotOrderPage from "./pages/ChatbotOrderPage";
 
 
 
@@ -29,8 +30,39 @@ import "./App.css"
 
 function Main() {
   return (
-    <Layout>
-      <Routes>
+    // <Layout>
+    //   <Routes>
+    //     <Route path="/" element={<HomePage />} />
+    //     <Route path="/about" element={<AboutPage />} />
+    //     <Route path="/reservations" element={<BookingPage />} />
+    //     <Route path="/menu" element={<MenuPage />} />
+    //     <Route path="/order-online" element={<OrderOnlinePage />} />
+    //     <Route path="/login" element={<Login />} />
+    //     <Route path="/reset-password" element={<ResetPassword />} />
+    //     <Route path="/reset-password/:uid/:token" element={<ResetPasswordConfirm />} />
+    //     <Route path="/register" element={<Register />} />
+    //     <Route path="/profile" element={<ProfilePage />} />
+    //     <Route path="/cart" element={<CartPage />} />
+    //     <Route path="/confirmation" element={<ConfirmedBooking />} />
+    //     <Route path="/manage-reservation/:ref" element={<ManageReservationPage />} />
+    //     <Route path="/order-confirmation" element={<OrderConfirmation />} />
+    //     <Route path="/my-reservations" element={<ReservationHistory />} />
+    //     <Route path="/my-orders" element={<OrderHistory />} />
+    //     <Route path="/my-reviews" element={<CustomerReviewHistory />} />
+    //     <Route path="/bot-orders" element={<ChatbotOrderPage />} />
+    //   </Routes>
+    // </Layout>
+
+    <Routes>
+      {/* Special route that uses BareLayout and skips Layout */}
+      <Route path="/bot-orders" element={
+        <BareLayout>
+          <ChatbotOrderPage />
+        </BareLayout>
+      } />
+
+      {/* All other routes wrapped with Layout */}
+      <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/reservations" element={<BookingPage />} />
@@ -48,8 +80,9 @@ function Main() {
         <Route path="/my-reservations" element={<ReservationHistory />} />
         <Route path="/my-orders" element={<OrderHistory />} />
         <Route path="/my-reviews" element={<CustomerReviewHistory />} />
-      </Routes>
-    </Layout>
+      </Route>
+    </Routes>
+
   );
 }
 

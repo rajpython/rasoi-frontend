@@ -42,6 +42,10 @@ const slides = [
     src: require("../../assets/foodtable3.png"),
     title: "来自中华"
   },
+  // {
+  //   src: require("../../assets/rakhiaj.png"),
+  //   title: "Feral & Neural"
+  // },
   {
     src: require("../../assets/sweetbengal.png"),
     title: "আমার মিষ্টি বাংলা"

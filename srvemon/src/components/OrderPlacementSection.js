@@ -124,6 +124,7 @@ function OrderPlacementSection({ total, onOrderPlaced }) {
         date: form.date,
         payment_method: method,
         payment_status: status,
+        is_confirmed: true,
       };
       const res = await fetch(`${BASE_URL}/restaurante/orders`, {
         method: "POST",
