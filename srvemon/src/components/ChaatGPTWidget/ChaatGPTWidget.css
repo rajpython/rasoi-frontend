@@ -93,12 +93,30 @@
     color: #b0172f;
   }
   
+  /* .message.bot {
+    text-align: left;
+    margin-bottom: 8px;
+    color: #333;
+    border-left: 2px dotted #d8caa3;
+    padding-left: 8px;
+  }
+   */
+
+   /* READABILITY TWEAKS added: line-height + font-size */
   .message.bot {
     text-align: left;
     margin-bottom: 8px;
     color: #333;
     border-left: 2px dotted #d8caa3;
     padding-left: 8px;
+    line-height: 1.6;       /* NEW */
+    font-size: 0.98rem;     /* NEW */
+  }
+  
+  /* Optional: make numbered/marked text stand out slightly */
+  .message.bot strong,
+  .message.bot b {
+    font-weight: 600;
   }
   
   .chat-input {

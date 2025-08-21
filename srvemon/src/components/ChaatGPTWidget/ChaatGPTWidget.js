@@ -312,6 +312,28 @@ import "./ChaatGPTWidget.css";
 import Draggable from "react-draggable";
 import { useNavigate } from "react-router-dom";
 
+/* ========= ① ADD: tiny formatter helper (top-level, above component) ========= */
+function formatBotHTML(text) {
+  if (!text) return "";
+  let t = String(text);
+
+  // **bold** → <strong>...</strong>
+  t = t.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+
+  // Add a line break before numbered items "1. ", "2. ", etc.
+  // Simple approach: if a number-list token appears after some text, insert a <br/>
+  t = t.replace(/\s(\d+)\.\s/g, (m, num) => `<br/>${num}. `);
+
+  // Hyphen bullets at line start: "- item" → "• item"
+  t = t.replace(/(^|\n)\s*-\s+/g, "$1• ");
+
+  // Preserve newlines
+  t = t.replace(/\n/g, "<br/>");
+
+  return t.trim();
+}
+/* ========= end helper ========= */
+
 const ChaatGPTWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -575,14 +597,26 @@ const ChaatGPTWidget = () => {
           return;
         }
 
+        // // Streaming text update
+        // setMessages((prev) => {
+        //   const last = prev[prev.length - 1];
+        //   if (last && last.role === "bot" && last.type !== "iframe") {
+        //     return [...prev.slice(0, -1), { ...last, content: botMessage }];
+        //   }
+        //   return [...prev, { role: "bot", content: botMessage }];
+        // });
+        /* ========= ② CHANGE: format streaming bot text before rendering ========= */
+        const pretty = formatBotHTML(botMessage);
+
         // Streaming text update
         setMessages((prev) => {
           const last = prev[prev.length - 1];
           if (last && last.role === "bot" && last.type !== "iframe") {
-            return [...prev.slice(0, -1), { ...last, content: botMessage }];
+            return [...prev.slice(0, -1), { ...last, content: pretty }];
           }
-          return [...prev, { role: "bot", content: botMessage }];
+          return [...prev, { role: "bot", content: pretty }];
         });
+        /* ========= end change ========= */
       }
     } catch (err) {
       setMessages((prev) => [
