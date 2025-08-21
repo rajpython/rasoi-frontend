@@ -19,10 +19,12 @@ export async function registerUser(formData) {
 
 // ---- JWT login ----
 export async function loginUser({ username, password }) {
+  const anonSessionId = localStorage.getItem("anonSessionId");  // Get guest ID
   const response = await fetch(`${BASE_URL}/auth/jwt/create/`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "X-Guest-Id": anonSessionId,  // ⬅️ Send guest ID in headers
     },
     body: JSON.stringify({ username, password }),
   });
@@ -40,15 +42,71 @@ export async function loginUser({ username, password }) {
   return { access: data.access, refresh: data.refresh };
 }
 
+
+
+
+// export async function loginUser({ username, password }) {
+//   const anonSessionId = localStorage.getItem("anonSessionId");  // Get guest ID
+
+//   const response = await fetch(`${BASE_URL}/auth/jwt/create/`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       "X-Guest-Id": anonSessionId,  // ⬅️ Send guest ID in headers
+//     },
+//     body: JSON.stringify({ username, password }),
+//   });
+
+//   const data = await response.json();
+//   if (!response.ok) {
+//     const errorMessage = data.detail || "Login failed";
+//     throw new Error(errorMessage);
+//   }
+
+//   localStorage.setItem("accessToken", data.access);
+//   localStorage.setItem("refreshToken", data.refresh);
+//   return { access: data.access, refresh: data.refresh };
+// }
+
+
+
+
+
+
+// // ---- JWT logout ----
+// export async function logoutUser() {
+//   // For JWT, you typically just remove tokens from storage.
+//   // If using blacklist, POST to blacklist endpoint as well.
+//   localStorage.removeItem("accessToken");
+//   localStorage.removeItem("refreshToken");
+//   window.dispatchEvent(new Event("storage"));
+//   return true;
+// }
+
+
+// THE ABOVE VERSIN OF LOGOUT WAS REPLACED BY THE ONE BELOW TO ENSURE THAT LOGOUT CLEARS THE CHAT
+
 // ---- JWT logout ----
 export async function logoutUser() {
-  // For JWT, you typically just remove tokens from storage.
-  // If using blacklist, POST to blacklist endpoint as well.
+  // 1) Clear tokens
   localStorage.removeItem("accessToken");
   localStorage.removeItem("refreshToken");
-  window.dispatchEvent(new Event("storage"));
-  return true;
+
+  // 2) Same-tab notification
+  window.dispatchEvent(new Event("app:logout"));
+
+  // 3) Cross-tab broadcast
+  localStorage.setItem(
+    "__auth_event__",
+    JSON.stringify({ type: "logout", ts: Date.now() })
+  );
+
+  // 4) If you later add API call to invalidate refresh token on server,
+  //    you could await fetch("/auth/jwt/logout", { ... })
+
+  return true; // ✅ same shape as your current function
 }
+
 
 // ---- Token refresh utility ----
 export async function refreshAccessToken() {
