@@ -36,7 +36,7 @@ function ManageReservationPage() {
         setError("Booking not found.");
         setIsLoading(false);
       });
-  }, [ref]);
+  }, [API_BASE, ref]);
 
   const updateTimes = (date) => {
     fetchAPI(date).then(setAvailableTimes);

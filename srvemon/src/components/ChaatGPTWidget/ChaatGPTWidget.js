@@ -2,7 +2,7 @@
 
 
 // // src/components/ChaatGPTWidget.js
-// import React, { useState, useRef, useEffect } from "react";
+// import React, { useCallback, useEffect, useRef, useState } from "react";
 // import chaatGPTLogo from "../../assets/chaatGPT-logo.png";
 // import { fetchWithAuth } from "../../api/authApi";
 // import "./ChaatGPTWidget.css";
@@ -305,7 +305,7 @@
 // WHEN THE USER IS DIRECTED TO THE LOGIN PAGE
 
 // src/components/ChaatGPTWidget.js
-import React, { useState, useRef, useEffect } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import chaatGPTLogo from "../../assets/chaatGPT-logo.png";
 import { fetchWithAuth } from "../../api/authApi";
 import "./ChaatGPTWidget.css";
@@ -368,7 +368,7 @@ const ChaatGPTWidget = () => {
 
 
     // Reset chat on server and locally
-  const resetChatOnServer = async () => {
+  const resetChatOnServer = useCallback(async () => {
     const url = `${
       process.env.REACT_APP_API_BASE_URL || "https://api.dhannobannokirasoi.com"
     }/restaurante/api/chaatreset/`;
@@ -382,7 +382,7 @@ const ChaatGPTWidget = () => {
     } catch (e) {
       console.error("Reset endpoint failed:", e);
     }
-  };
+  }, []);
 
 
   // 🔄 Remove storage-based auto-clear to avoid wiping the chat on auth changes across tabs
