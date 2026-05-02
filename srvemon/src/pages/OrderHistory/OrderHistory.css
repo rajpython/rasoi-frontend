@@ -1,5 +1,6 @@
 .order-table {
     width: 100%;
+    min-width: 660px;
     border-collapse: collapse;
     margin-bottom: 2rem;
   }

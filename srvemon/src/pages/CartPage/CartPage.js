@@ -114,56 +114,58 @@ function CartPage() {
         <p className="cart-empty-message">Your cart is empty.</p>
       ) : (
         <>
-          <table className="cart-table">
-            <thead>
-              <tr>
-                <th>Item</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Subtotal</th>
-                <th>Remove</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cartItems.map(item => {
-                const menuItem = getMenuItem(item.menuitem);
-                return (
-                  <tr key={item.menuitem || item.id}>
-                    <td className="item-title">{menuItem.title || item.title}</td>
-                    <td>
-                      <div className="quantity-controls">
-                        <button
-                          className="quantity-btn"
-                          onClick={() => handleUpdateQuantity(item, Math.max(1, item.quantity - 1))}
-                          disabled={item.quantity <= 1}
-                        >−</button>
-                        <input
-                          className="quantity-input"
-                          type="number"
-                          min="1"
-                          value={item.quantity}
-                          onChange={e =>
-                            handleUpdateQuantity(item, Math.max(1, parseInt(e.target.value) || 1))
-                          }
-                        />
-                        <button
-                          className="quantity-btn"
-                          onClick={() => handleUpdateQuantity(item, item.quantity + 1)}
-                        >+</button>
-                      </div>
-                    </td>
-                    <td>₹{Number(item.unit_price).toFixed(2)}</td>
-                    <td>₹{Number(item.price).toFixed(2)}</td>
-                    <td>
-                      <button className="remove-btn" onClick={() => handleRemoveItem(item)}>
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <div className="table-scroll">
+            <table className="cart-table">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Quantity</th>
+                  <th>Unit Price</th>
+                  <th>Subtotal</th>
+                  <th>Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cartItems.map(item => {
+                  const menuItem = getMenuItem(item.menuitem);
+                  return (
+                    <tr key={item.menuitem || item.id}>
+                      <td className="item-title">{menuItem.title || item.title}</td>
+                      <td>
+                        <div className="quantity-controls">
+                          <button
+                            className="quantity-btn"
+                            onClick={() => handleUpdateQuantity(item, Math.max(1, item.quantity - 1))}
+                            disabled={item.quantity <= 1}
+                          >−</button>
+                          <input
+                            className="quantity-input"
+                            type="number"
+                            min="1"
+                            value={item.quantity}
+                            onChange={e =>
+                              handleUpdateQuantity(item, Math.max(1, parseInt(e.target.value) || 1))
+                            }
+                          />
+                          <button
+                            className="quantity-btn"
+                            onClick={() => handleUpdateQuantity(item, item.quantity + 1)}
+                          >+</button>
+                        </div>
+                      </td>
+                      <td>₹{Number(item.unit_price).toFixed(2)}</td>
+                      <td>₹{Number(item.price).toFixed(2)}</td>
+                      <td>
+                        <button className="remove-btn" onClick={() => handleRemoveItem(item)}>
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
           <div className="cart-totals">
             <div className="total-row">Total: ₹{total.toFixed(2)}</div>
           </div>

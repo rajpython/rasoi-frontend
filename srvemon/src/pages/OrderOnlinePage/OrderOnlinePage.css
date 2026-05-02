@@ -175,19 +175,37 @@
   }
   
   @media (max-width: 600px) {
+    .order-page {
+      margin-top: 90px;
+    }
+    .scroll-note {
+      display: none;
+    }
     .menu-grid {
       grid-template-columns: 1fr;
     }
     .menu-grid > .menu-card:nth-child(1) {
       margin-top: 15px;
     }
-  
+
+    /* Let cards grow naturally on mobile so controls aren't clipped */
+    .menu-card {
+      height: auto;
+      overflow: visible;
+    }
+
     .menu-card input[type="number"] {
       width: 50px;
     }
-  
+
     .menu-card button {
       width: 100%;
+      min-height: 44px;
+    }
+
+    .quantity-buttons button {
+      min-height: 44px;
+      padding: 0.5rem 0.7rem;
     }
   }
   

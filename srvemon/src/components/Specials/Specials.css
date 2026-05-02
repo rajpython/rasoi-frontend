@@ -6,7 +6,7 @@
   
   /* Main Specials Section */
   .specials {
-    width: 100vw;
+    width: 100%;
     background: var(--header-bg);
     color: var(--header-fg);
     padding: 0;
@@ -17,7 +17,7 @@
   /* Specials Row: 100vw, Left 20vw, Middle 60vw, Right 20vw */
   .specials-row {
     display: flex;
-    width: 100vw;
+    width: 100%;
     min-height: 350px;
     align-items: stretch;
     background: var(--header-bg);
@@ -188,12 +188,12 @@
     .carousel-container { width: 80vw; }
   }
   @media (max-width: 900px) {
-    .specials-row { flex-direction: column; width: 100vw; }
-    .specials-header { width: 100vw; max-width: none; align-items: center; }
-    .carousel-container { width: 100vw; min-width: 0; }
+    .specials-row { flex-direction: column; width: 100%; }
+    .specials-header { width: 100%; max-width: none; align-items: center; }
+    .carousel-container { width: 100%; min-width: 0; }
     .carousel-slide { flex-direction: column; height: 260px; }
-    .special-image { width: 100vw; height: 120px; border-radius: 0.5rem 0.5rem 0 0; }
-    .special-text { width: 100vw; border-radius: 0 0 0.5rem 0.5rem; padding: 1rem 0.6rem; }
+    .special-image { width: 100%; height: 120px; border-radius: 0.5rem 0.5rem 0 0; }
+    .special-text { width: 100%; border-radius: 0 0 0.5rem 0.5rem; padding: 1rem 0.6rem; }
   }
   @media (max-width: 600px) {
     .specials-header h2 { font-size: 1.1rem; }

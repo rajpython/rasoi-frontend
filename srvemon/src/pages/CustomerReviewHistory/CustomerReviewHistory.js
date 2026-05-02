@@ -37,29 +37,30 @@ function CustomerReviewHistory() {
   return (
     <div className="customer-review-history" style={{ maxWidth: "900px", margin: "0 auto" }}>
       <h2 style={{ textAlign: "center", marginBottom: "1.2rem" }}>Your Reviews</h2>
-      <table className="review-table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Stars</th>
-            <th>Review</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className="table-scroll">
+        <table className="review-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Stars</th>
+              <th>Review</th>
+            </tr>
+          </thead>
+          <tbody>
             {reviews && reviews.length > 0 ? (
-                reviews.map(review => (
+              reviews.map(review => (
                 <tr key={review.id}>
-                    <td>{formatDate(review.created_at)}</td>
-                    <td>{'★'.repeat(review.rating) + '☆'.repeat(5 - review.rating)}</td>
-                    <td>{review.feedback}</td>
+                  <td>{formatDate(review.created_at)}</td>
+                  <td>{'★'.repeat(review.rating) + '☆'.repeat(5 - review.rating)}</td>
+                  <td>{review.feedback}</td>
                 </tr>
-                ))
+              ))
             ) : (
-                <tr><td colSpan="3">No reviews found.</td></tr>
+              <tr><td colSpan="3">No reviews found.</td></tr>
             )}
-        </tbody>
-
-      </table>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

@@ -101,11 +101,18 @@
   }
   
   @media (max-width: 600px) {
+    .scroll-note {
+      display: none;
+    }
     .menu-grid {
       grid-template-columns: 1fr;
     }
     .menu-grid > .menu-card:nth-child(1) {
       margin-top: 15px;
+    }
+    .menu-card {
+      height: auto;
+      overflow: visible;
     }
   }
   

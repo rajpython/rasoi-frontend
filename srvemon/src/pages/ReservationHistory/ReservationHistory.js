@@ -70,51 +70,55 @@ function ReservationHistory() {
       {upcoming.length > 0 && (
         <>
           <h3>Upcoming Reservations</h3>
-          <table className="reservation-table">
-            <thead>
-              <tr>
-                <th>Date</th><th>Time</th><th>Guests</th><th>Occasion</th><th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {upcoming.map(res => (
-                <tr key={res.id}>
-                  <td>{formatDate(res.reservation_date)}</td>
-                  <td>{res.reservation_time}</td>
-                  <td>{res.no_of_guests}</td>
-                  <td>{res.occasion}</td>
-                  <td>
-                    <button onClick={() => handleManage(res.reference_number)}>
-                      Change / Cancel
-                    </button>
-                  </td>
+          <div className="table-scroll">
+            <table className="reservation-table">
+              <thead>
+                <tr>
+                  <th>Date</th><th>Time</th><th>Guests</th><th>Occasion</th><th>Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {upcoming.map(res => (
+                  <tr key={res.id}>
+                    <td>{formatDate(res.reservation_date)}</td>
+                    <td>{res.reservation_time}</td>
+                    <td>{res.no_of_guests}</td>
+                    <td>{res.occasion}</td>
+                    <td>
+                      <button onClick={() => handleManage(res.reference_number)}>
+                        Change / Cancel
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </>
       )}
 
       {past.length > 0 && (
         <>
           <h3 style={{ marginTop: "2rem" }}>Past Reservations</h3>
-          <table className="reservation-table">
-            <thead>
-              <tr>
-                <th>Date</th><th>Time</th><th>Guests</th><th>Occasion</th>
-              </tr>
-            </thead>
-            <tbody>
-              {past.map(res => (
-                <tr key={res.id}>
-                  <td>{formatDate(res.reservation_date)}</td>
-                  <td>{res.reservation_time}</td>
-                  <td>{res.no_of_guests}</td>
-                  <td>{res.occasion}</td>
+          <div className="table-scroll">
+            <table className="reservation-table">
+              <thead>
+                <tr>
+                  <th>Date</th><th>Time</th><th>Guests</th><th>Occasion</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {past.map(res => (
+                  <tr key={res.id}>
+                    <td>{formatDate(res.reservation_date)}</td>
+                    <td>{res.reservation_time}</td>
+                    <td>{res.no_of_guests}</td>
+                    <td>{res.occasion}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </>
       )}
     </div>

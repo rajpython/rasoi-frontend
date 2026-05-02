@@ -1,5 +1,6 @@
 .review-table {
     width: 100%;
+    min-width: 380px;
     border-collapse: collapse;
   }
   .review-table th, .review-table td {
