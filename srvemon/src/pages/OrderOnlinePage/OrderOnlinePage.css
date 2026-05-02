@@ -176,7 +176,8 @@
   
   @media (max-width: 600px) {
     .order-page {
-      margin-top: 90px;
+      margin-top: 0;
+      padding: 8.5rem 1rem 2rem;
     }
     .scroll-note {
       display: none;

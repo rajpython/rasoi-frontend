@@ -101,6 +101,9 @@
   }
   
   @media (max-width: 600px) {
+    .menu-container {
+      padding: 8.5rem 1rem 2rem;
+    }
     .scroll-note {
       display: none;
     }
