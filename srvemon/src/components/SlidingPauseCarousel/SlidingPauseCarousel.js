@@ -102,7 +102,6 @@ function SlidingPauseCarousel() {
       <div
         className="carousel-fullscreen-track"
         style={{
-          width: `${extendedSlides.length * 100}%`,
           transform: `translateX(-${index * 100}%)`,
           transition: transitioning
             ? "transform 2.2s cubic-bezier(.5,1,.5,1)"
