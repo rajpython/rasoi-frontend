@@ -1,5 +1,5 @@
 .reviews-section-wide {
-    width: 100%;
+    width: 100vw;
     max-width: 100%;
     padding: 0 0 32px 0;
     background: linear-gradient(90deg, #fffde7 70%, #f8bbd0 100%);

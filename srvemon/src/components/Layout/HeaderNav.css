@@ -238,14 +238,8 @@
     .header-right .reserve-button {
       padding: 0.3rem 0.6rem;
       font-size: 0.8rem;
-      min-height: 44px;
     }
-
-    /* Cancel the 44px min-height when header is shrunk — button must fit the 22px bar */
-    .header-shrunk .header-right .reserve-button {
-      min-height: unset;
-    }
-
+  
     .nav-list {
       flex-wrap: wrap;
       justify-content: center;
