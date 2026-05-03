@@ -49,15 +49,15 @@ const isInIframe = window.self !== window.top;
 
 function App() {
   return (
-    <>
-      <Elements stripe={stripePromise}>
-        <Main />
-        {/* <ChaatGPTWidget />
-        <Footer /> */}
-        {!isInIframe && <ChaatGPTWidget />}
+    <Elements stripe={stripePromise}>
+      <div className="app-shell">
+        <div className="app-main-shell">
+          <Main />
+        </div>
         {!isInIframe && <Footer />}
-      </Elements>
-    </>
+        {!isInIframe && <ChaatGPTWidget />}
+      </div>
+    </Elements>
   );
 }
 
