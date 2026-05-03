@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getProfile, updateProfile } from "../api/authApi";
 import DemographicFormSection from "../components/DemographicFormSection";
+import "../styles/FormStyles.css";
 
 
 function ProfilePage() {
@@ -62,7 +63,7 @@ function ProfilePage() {
   };
 
   return (
-    <div className="form-wrapper">
+    <div className="form-wrapper profile-form-wrapper">
       <form onSubmit={handleSubmit} className="form-section">
         <h2>Edit Your Profile</h2>
         {error && <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>}

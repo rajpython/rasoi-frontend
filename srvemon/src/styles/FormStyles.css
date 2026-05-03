@@ -99,3 +99,12 @@
     font-size: 1rem;
   }
   
+.profile-form-wrapper {
+    margin-top: 160px;
+  }
+
+  @media (max-width: 600px) {
+    .profile-form-wrapper {
+      margin-top: 105px;
+    }
+  }
